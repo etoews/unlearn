@@ -10,4 +10,4 @@ We start with what it means to unlearn in the context of the AI era. Then we inc
 
 ## Research
 
-[docs/research.html](docs/research.html) collects the evidence behind the talk, with citations: what unlearning means, vendor guidance on removing scaffolding written for older models, counter-evidence, an evals primer, and how the [ai-eval](https://github.com/etoews/skills/tree/main/skills/ai-eval) skill fits. Open it in a browser.
+[docs/research.html](docs/research.html) collects the evidence behind the talk, with citations: what unlearning means, why intuition can't tell you which workarounds went stale (from Kahneman's *Thinking, Fast and Slow*), vendor guidance on removing scaffolding written for older models, counter-evidence, an evals primer, and how the [ai-eval](https://github.com/etoews/skills/tree/main/skills/ai-eval) skill fits. Open it in a browser.
