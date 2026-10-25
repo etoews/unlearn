@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340">
+  <title>My STE rule: added 29 Aug for Opus 5, Opus 5.5 ships 22 Sep claiming better writing, dropped 27 Sep with no reason given, still applied that afternoon</title>
+  <style>
+    text { font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; fill: #222; text-anchor: middle; }
+    .date { font-size: 26px; font-weight: 700; }
+    .event { font-size: 24px; }
+    .sub { font-size: 19px; fill: #666; }
+    .era { font-size: 20px; fill: #555; }
+    .axis { stroke: #222; stroke-width: 3; }
+    .dot { fill: #2a76dd; }
+    .twist { fill: #d35400; }
+    .band { fill: #eef2f7; }
+    .band55 { fill: #e3ecfa; }
+  </style>
+  <line class="axis" x1="30" y1="150" x2="870" y2="150"/>
+
+  <circle class="dot" cx="120" cy="150" r="12"/>
+  <text class="date" x="120" y="112">29 Aug</text>
+  <text class="event" x="120" y="196">Added</text>
+  <text class="sub" x="120" y="224">for Opus 5</text>
+
+  <circle class="dot" cx="340" cy="150" r="12"/>
+  <text class="date" x="340" y="112">22 Sep</text>
+  <text class="event" x="340" y="196">Opus 5.5 ships</text>
+  <text class="sub" x="340" y="224">“better writing”</text>
+
+  <circle class="dot" cx="560" cy="150" r="12"/>
+  <text class="date" x="560" y="112">27 Sep</text>
+  <text class="event" x="560" y="196">Dropped</text>
+  <text class="sub" x="560" y="224">no reason given</text>
+
+  <circle class="twist" cx="780" cy="150" r="12"/>
+  <text class="date" x="780" y="112">27 Sep pm</text>
+  <text class="event" x="780" y="196">Still applied</text>
+  <text class="sub" x="780" y="224">96 semicolons fixed</text>
+
+  <rect class="band" x="30" y="270" width="310" height="44"/>
+  <rect class="band55" x="340" y="270" width="530" height="44"/>
+  <text class="era" x="185" y="299">Opus 5</text>
+  <text class="era" x="605" y="299">Opus 5.5</text>
+</svg>

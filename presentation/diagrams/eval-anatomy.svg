@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300">
+  <title>Anatomy of an eval: cases with ground truth go into a configuration, which produces outputs; judges score the outputs into results. A configuration run over all cases is one experiment.</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; fill: #222; text-anchor: middle; }
+    .name { font-size: 24px; font-weight: 700; }
+    .sub { font-size: 17px; fill: #555; }
+    .box { fill: #eef2f7; stroke: #222; stroke-width: 2; }
+    .exp { fill: #e3ecfa; stroke: #2a76dd; stroke-width: 3; }
+    .flow { stroke: #222; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    .bracket { stroke: #2a76dd; stroke-width: 3; fill: none; }
+    .label { font-size: 22px; font-weight: 700; fill: #2a76dd; }
+  </style>
+
+  <rect class="box" x="10" y="60" width="150" height="130" rx="8"/>
+  <text class="name" x="85" y="108">Cases</text>
+  <text class="sub" x="85" y="138">input +</text>
+  <text class="sub" x="85" y="160">ground truth</text>
+
+  <rect class="exp" x="197" y="60" width="150" height="130" rx="8"/>
+  <text class="name" x="272" y="108">Config</text>
+  <text class="sub" x="272" y="138">model · effort</text>
+  <text class="sub" x="272" y="160">system prompt</text>
+
+  <rect class="exp" x="385" y="60" width="150" height="130" rx="8"/>
+  <text class="name" x="460" y="108">Outputs</text>
+  <text class="sub" x="460" y="138">one per</text>
+  <text class="sub" x="460" y="160">case</text>
+
+  <rect class="box" x="572" y="60" width="150" height="130" rx="8"/>
+  <text class="name" x="647" y="108">Judges</text>
+  <text class="sub" x="647" y="138">one per</text>
+  <text class="sub" x="647" y="160">metric</text>
+
+  <rect class="box" x="760" y="60" width="130" height="130" rx="8"/>
+  <text class="name" x="825" y="108">Results</text>
+  <text class="sub" x="825" y="138">scores · why</text>
+  <text class="sub" x="825" y="160">cost</text>
+
+  <line class="flow" x1="160" y1="125" x2="195" y2="125"/>
+  <line class="flow" x1="347" y1="125" x2="383" y2="125"/>
+  <line class="flow" x1="535" y1="125" x2="570" y2="125"/>
+  <line class="flow" x1="722" y1="125" x2="758" y2="125"/>
+
+  <path class="bracket" d="M197,210 v14 h338 v-14"/>
+  <text class="label" x="366" y="258">One experiment</text>
+</svg>

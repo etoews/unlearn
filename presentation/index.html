@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Unlearn with AI Evals</title>
-<!-- Everything loads from vendor/ by relative path, so the deck runs offline from file:// and unchanged on GitHub Pages. -->
+<!-- Everything loads from vendor/ and diagrams/ by relative path, so the deck runs offline from file:// and unchanged on GitHub Pages. -->
 <link rel="stylesheet" href="vendor/reveal.js/reset.css">
 <link rel="stylesheet" href="vendor/reveal.js/reveal.css">
 <link rel="stylesheet" href="vendor/reveal.js/theme/white.css">
@@ -14,29 +14,338 @@
 <div class="reveal">
 <div class="slides">
 
+<!-- 0. Opener (0:00–2:00) -->
+
 <section>
   <h1>Unlearn with AI Evals</h1>
   <p>Everett Toews · CloudNative.AI Melbourne</p>
-  <aside class="notes">Speaker notes go in an aside like this. Press S to open the speaker view.</aside>
 </section>
 
 <section>
-  <h2>The prompts you perfected are still in your fingers</h2>
-  <p>Every release shifts the line between what still works and what needs to be unlearned. Nothing tells you which.</p>
+  <h2>Learn, unlearn, relearn</h2>
+  <p><s>"The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn."</s></p>
+  <ul>
+    <li>Toffler, 1970</li>
+    <li>Gerjuoy, quoted by Toffler</li>
+    <li>"how and <em>when</em>"</li>
+  </ul>
+  <aside class="notes">
+    <p>The famous line merges two passages.</p>
+    <p>Even the unlearning quote needed unlearning.</p>
+    <p><em>When</em> is the talk.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Toffler, 1970": <em>Future Shock</em>, ch. 18 ("learn, unlearn and relearn"). <a href="https://archive.org/details/FutureShock_143">archive.org</a></li>
+      <li>"Gerjuoy, quoted by Toffler": <em>Future Shock</em>, ch. 18, next paragraph ("Tomorrow's illiterate will not be the man who can't read").</li>
+      <li>"how and when": <em>Future Shock</em>, ch. 18 ("how to discard old ideas, how and when to replace them").</li>
+      <li>Struck-through quote is a misattribution: <a href="https://wist.info/toffler-alvin/">wist.info</a> · <a href="https://kottke.org/23/12/learning-unlearning-and-relearning">kottke.org</a></li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 1. Unlearning in the AI era (2:00–9:00) -->
+
+<section>
+  <h2>My STE rule</h2>
+  <img src="diagrams/ste-timeline.svg" alt="Timeline: 29 Aug, STE rule added for Opus 5. 22 Sep, Opus 5.5 ships claiming better writing. 27 Sep, rule dropped with no reason given. 27 Sep afternoon, an older session still applied it, fixing 96 semicolons." style="width: 100%;">
+  <p>Was I right?</p>
+  <aside class="notes">
+    <p>Added for Opus 5's verbosity.</p>
+    <p>Dropped by vibe. No reason recorded.</p>
+    <p>A stale session still applied it.</p>
+    <p>Leave the question open until the verdict.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"29 Aug · Added": my dotfiles commit, 29 Aug 2026 (private repo).</li>
+      <li>"for Opus 5": Opus 5 averages 510 words per response vs 158 for Opus 4.5. paddo.dev, "A Dial Worth Turning", 2 Sep 2026. <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
+      <li>"22 Sep · Opus 5.5 ships", "better writing": Anthropic, "Claude Opus 5.5", 22 Sep 2026 ("major improvements to the way Opus 5.5 writes and communicates"). <a href="https://www.anthropic.com/claude-opus-5-5">anthropic.com</a></li>
+      <li>"27 Sep · Dropped", "no reason given": my dotfiles commit, 27 Sep 2026 (private repo).</li>
+      <li>"Still applied", "96 semicolons fixed": a commit in another project, 27 Sep 2026.</li>
+    </ul>
+  </aside>
 </section>
 
 <section>
-  <h2>Today</h2>
-  <ol>
-    <li>What it means to unlearn in the AI era</li>
-    <li>An introduction to evals</li>
-    <li>A walk-through of a real setup</li>
-  </ol>
+  <h2>Where scaffolding lives</h2>
+  <ul>
+    <li>Your fingers</li>
+    <li>Your memory files</li>
+    <li>Your system prompt: −80%</li>
+  </ul>
+  <aside class="notes">
+    <p>Fingers: habits outlive rules.</p>
+    <p>Memory: my em-dash ban survives in copies.</p>
+    <p>System prompt: Anthropic cut 80%, gated on evals.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Your memory files": my own memory and prompt files still hold an em-dash ban removed from CLAUDE.md in Aug 2026.</li>
+      <li>"−80%": Shihipar, T., "The new rules of context engineering for Claude 5 generation models", Anthropic, 24 Jul 2026 ("removed over 80% of Claude Code's system prompt… with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
+    </ul>
+  </aside>
 </section>
 
 <section>
-  <h2>Measure what changed</h2>
-  <p>Unlearn what no longer holds. Pick up what's improved.</p>
+  <h2>Every generation: delete this</h2>
+  <ul>
+    <li>"CRITICAL: You MUST"</li>
+    <li>"Verify your work"</li>
+    <li>"No bullet points"</li>
+    <li>"Think carefully"</li>
+  </ul>
+  <aside class="notes">
+    <p>Each was right for an older model.</p>
+    <p>Each new guide says remove it.</p>
+    <p>Two vendors, same month.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"CRITICAL: You MUST": "Prompting best practices", Claude Platform Docs (more responsive to the system prompt; now overtriggers). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
+      <li>"Verify your work": "Prompting Claude Opus 5" ("remove these instructions rather than rewriting them"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5">platform.claude.com</a></li>
+      <li>"Verify your work", second vendor: OpenAI, "Rethinking skills and prompts for GPT-6 Astra" ("the same instructions can lead to unnecessary testing"). Author and date not on the page; verify before quoting. <a href="https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra">developers.openai.com</a></li>
+      <li>"No bullet points": "Prompting Claude Fable 5.1" (anti-formatting rules now push the model the wrong way). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1">platform.claude.com</a></li>
+      <li>"Think carefully": "Prompting Claude Opus 5.5", 22 Sep 2026 ("removing such a line made replies start sooner, with no clear decline in the quality of the reply"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">platform.claude.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Why you can't see it</h2>
+  <ul>
+    <li>Habit fires first</li>
+    <li>3 prompts feel like proof</li>
+    <li>Losses loom larger</li>
+  </ul>
+  <aside class="notes">
+    <p>System 1 applies old patterns.</p>
+    <p>A 3-prompt vibe check passes a 1-in-4 failure 42% of the time.</p>
+    <p>Deleting risks a visible loss. Keeping hides a gain.</p>
+    <p>The rule you perfected is the hardest to drop.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Habit fires first": "Thinking, Fast and Slow", Wikipedia, revision 8 Sep 2026 ("associating new information with existing patterns"). <a href="https://en.wikipedia.org/w/index.php?title=Thinking,_Fast_and_Slow&amp;oldid=1373846268">wikipedia.org</a></li>
+      <li>"3 prompts feel like proof": same Wikipedia revision (WYSIATI, "a small and necessarily un-representative set of observations"); 42% from Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 (75% per-trial pass rate, three in a row). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+      <li>"Losses loom larger": same Wikipedia revision ("more likely to act to avert a loss than to achieve a gain").</li>
+      <li>"Hardest to drop" (spoken): Sutton, R., "The Bitter Lesson", 2019 ("personally satisfying to the researcher"). <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">incompleteideas.net</a></li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 2. Evals, just enough (9:00–15:00) -->
+
+<section>
+  <h2>Evals turn weeks into days</h2>
+  <ul>
+    <li>Weeks → days</li>
+    <li>Anthropic: evals first</li>
+    <li>You: vibes</li>
+  </ul>
+  <aside class="notes">
+    <p>With evals you upgrade in days.</p>
+    <p>Anthropic gated its 80% cut on evals.</p>
+    <p>Users are told to "observe".</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Weeks → days": Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("teams without evals face weeks of testing while competitors with evals can… upgrade in days"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+      <li>"Anthropic: evals first": Shihipar, 24 Jul 2026 ("no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
+      <li>"You: vibes": "Best practices for Claude Code" ("test changes by observing whether Claude's behavior actually shifts"). <a href="https://code.claude.com/docs/en/best-practices">code.claude.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Anatomy of an eval</h2>
+  <img src="diagrams/eval-anatomy.svg" alt="Cases with input and ground truth flow into a config (model, effort, system prompt), which produces one output per case. Judges, one per metric, score the outputs into results: scores, reasons and cost. Config plus outputs is one experiment." style="width: 100%;">
+  <aside class="notes">
+    <p>Cases have ground truth.</p>
+    <p>An experiment is one config over all cases.</p>
+    <p>Judges score each case.</p>
+    <p>Running example: STE.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Cases… ground truth", "Judges": Husain, H. &amp; Shankar, S., "AI Evals: Everything You Need to Know", Sep 2026. <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
+      <li>"Config", "One experiment", "scores · why · cost": the ai-eval skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-eval">github.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Judges have biases</h2>
+  <ul>
+    <li>Give it the answer</li>
+    <li>Long ≠ good</li>
+    <li>Pin it. Binary. Read why.</li>
+  </ul>
+  <aside class="notes">
+    <p>A reference answer cut false passes from 14/20 to 3/20.</p>
+    <p>Verbosity bias meets a verbose model.</p>
+    <p>Pin the judge. Pass/fail labels. Read the explanations.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Give it the answer": Zheng, L. et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", 2023 (wrong maths answers accepted: 14/20 default → 3/20 with reference). <a href="https://arxiv.org/abs/2306.05685">arXiv</a></li>
+      <li>"Long ≠ good": Zheng et al. 2023 (verbosity attack); Opus 5's 510 vs 158 words from paddo.dev, "A Dial Worth Turning". <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
+      <li>"Binary": Husain &amp; Shankar ("Binary evaluations force clearer thinking and more consistent labeling"). <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Read results honestly</h2>
+  <ul>
+    <li>Run it again</li>
+    <li>Cost beside score</li>
+    <li>Evals expire too</li>
+  </ul>
+  <aside class="notes">
+    <p>Use repetitions. One run is noise.</p>
+    <p>Cheaper and buggier is a regression.</p>
+    <p>An eval lasts one to three generations.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Run it again": Anthropic, "Demystifying evals for AI agents" (variance across trials). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a> · Arize Phoenix, repetitions. <a href="https://arize.com/docs/phoenix/datasets-and-experiments/how-to-experiments/repetitions">arize.com</a></li>
+      <li>"Evals expire too": Cherny, B., Y Combinator Startup School, 27 Jul 2026 ("An eval might live for maybe one, two, three model generations"). <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a> · Martin, L., "Automating eval design and hillclimbing with Claude", 28 Sep 2026 ("the valleys of one model's capability surface"). <a href="https://claude.dev/blog/automating-eval-design-and-hillclimbing/">claude.dev</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>The unlearning experiment</h2>
+  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and ablation (new model, scaffolding removed). Comparing them leads to keep, unlearn or add." style="width: 100%;">
+  <aside class="notes">
+    <p>Baseline, candidate, ablation.</p>
+    <p>An ablation is an eval where you delete things.</p>
+    <p>Three outcomes: keep, unlearn, add.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Ablation": Cherny, B., Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact"). <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 3. Walk-through: should STE stay? (15:00–22:00) -->
+
+<section>
+  <h2>Should STE stay?</h2>
+  <ul>
+    <li>A: Opus 5 + STE</li>
+    <li>B: Opus 5.5 + STE</li>
+    <li>C: Opus 5.5, no STE</li>
+    <li>20 real docs tasks</li>
+  </ul>
+  <aside class="notes">
+    <p>A: the world I wrote it for.</p>
+    <p>C: what I chose by vibe.</p>
+    <p>Three judges plus an STE style judge. Cost tracked. Judge pinned. Repetitions on.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"A", "B", "C", "20 real docs tasks": my own dataset and experiments, run with the ai-eval skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-eval">github.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <section>
+    <h2>→ Phoenix</h2>
+    <aside class="notes">
+      <p>1. Dataset. 2. Experiments, cost. 3. Compare B vs C. 4. One judge explanation. 5. Cost B vs C.</p>
+      <p>Backup screenshots: press down.</p>
+      <p>Cites: none (live demo).</p>
+    </aside>
+  </section>
+  <section>
+    <h3>Dataset</h3>
+    <p>TODO: screenshot</p>
+  </section>
+  <section>
+    <h3>Experiments, with cost</h3>
+    <p>TODO: screenshot</p>
+  </section>
+  <section>
+    <h3>Compare: B vs C</h3>
+    <p>TODO: screenshot</p>
+  </section>
+  <section>
+    <h3>One judge explanation</h3>
+    <p>TODO: screenshot</p>
+  </section>
+  <section>
+    <h3>Cost: B vs C</h3>
+    <p>TODO: screenshot</p>
+  </section>
+</section>
+
+<section>
+  <h2>Verdict</h2>
+  <p>Keep · Unlearn · Rewrite</p>
+  <p>TODO: headline number</p>
+  <aside class="notes">
+    <p>If C holds: the vibe call is now measured.</p>
+    <p>If B wins: the eval caught a harmful deletion.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"Keep · Unlearn · Rewrite", headline number: my own experiment results (TODO after the runs).</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 4. Close (22:00–25:00) -->
+
+<section>
+  <h2>New model, new workarounds</h2>
+  <ul>
+    <li>"thoughts? = discuss"</li>
+    <li>Written for Opus 5</li>
+    <li>Give it an expiry</li>
+  </ul>
+  <aside class="notes">
+    <p>I'm still writing them.</p>
+    <p>Record the incident each rule exists for.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"thoughts? = discuss", "Written for Opus 5": my dotfiles commit, 19 Sep 2026 (private repo; "because the default reading is to start work").</li>
+      <li>"Give it an expiry": Zaninotto, F., "The State of AI Harness Engineering 2026", Marmelab, 24 Sep 2026 ("give every control an expiry condition, and write down the incident it exists for"). <a href="https://marmelab.com/blog/2026/09/24/the-state-of-ai-harness-engineering-2026.html">marmelab.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Start with a linter</h2>
+  <ul>
+    <li><code>/doctor prompt-audit</code></li>
+    <li>Shows what looks stale</li>
+    <li>Mine: "nothing stale"</li>
+    <li>Then: test it</li>
+  </ul>
+  <aside class="notes">
+    <p>A linter, not a measurement.</p>
+    <p>It cleared my CLAUDE.md three weeks after I added an Opus 5 rule.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"/doctor prompt-audit", "Shows what looks stale": "Memory" (audit your instruction files), Claude Code Docs ("instructions written for older models"). <a href="https://code.claude.com/docs/en/memory">code.claude.com</a></li>
+      <li>"Mine: nothing stale": my own <code>/claude-api prompt-audit</code> run, 11 Oct 2026 ("no workarounds for older models").</li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Monday</h2>
+  <ul>
+    <li>One line</li>
+    <li>20 real cases</li>
+    <li>With vs without</li>
+  </ul>
+  <aside class="notes">
+    <p>Pick the line you can't justify.</p>
+    <p>Take cases from real failures.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"20 real cases": Anthropic, "Demystifying evals for AI agents" ("20-50 simple tasks drawn from real failures is a great start"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Workarounds live in System 1</h2>
+  <p>Evals are a System 2 you can rerun.</p>
+  <p><a href="https://github.com/etoews/unlearn">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-eval">ai-eval skill</a></p>
 </section>
 
 </div>
