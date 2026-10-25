@@ -8,6 +8,13 @@ Models change under us constantly and every release quietly shifts the line betw
 
 We start with what it means to unlearn in the context of the AI era. Then we increase our understanding with an introduction to evals (ground truth, metrics, LLM-as-judge, etc). Followed by a walk-through of a real setup that tests new models against the prompts that matter to you. You'll leave knowing how to measure what changed, unlearn what no longer holds, and pick up what's improved.
 
-## Research
+## Presentation
 
-[docs/research.html](docs/research.html) collects the evidence behind the talk, with citations: what unlearning means, why old workarounds stick (from Kahneman's *Thinking, Fast and Slow*), vendor guidance on removing scaffolding written for older models, counter-evidence, an evals primer, and how the [ai-eval](https://github.com/etoews/skills/tree/main/skills/ai-eval) skill fits. Open it in a browser.
+The slides are a [reveal.js](https://revealjs.com/) deck in [presentation/](presentation/). There is nothing to install or build.
+
+- **Present locally, offline:** open `presentation/index.html` in a browser. reveal.js 6.0.2 is vendored in `presentation/vendor/reveal.js/`, so the deck needs no network connection.
+- **Online:** GitHub Pages publishes the `main` branch at <https://etoews.github.io/unlearn/presentation/>.
+
+Keys: arrows to move, `S` for the speaker view (notes go in `<aside class="notes">`), `F` for full screen, `Esc` for the overview, `Ctrl+Shift+F` to search.
+
+To upgrade reveal.js, replace the files in `presentation/vendor/reveal.js/` with the same files from the new release's `dist/` and update `VERSION`.
