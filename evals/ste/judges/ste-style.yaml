@@ -1,0 +1,29 @@
+# A binary style judge for the --judge-file option of the ai-evals skill.
+# It checks a subset of the ASD-STE100 writing rules that a judge can count.
+name: ste_style
+positive: pass
+negative: fail
+prompt: |
+  You are checking whether a piece of technical documentation follows the
+  writing rules of ASD-STE100 Simplified Technical English (STE). Judge style
+  only, not accuracy.
+
+  Rules to check:
+  1. A procedural sentence (an instruction) has no more than 20 words.
+  2. A descriptive sentence has no more than 25 words.
+  3. Each instruction is in the imperative and starts with the verb.
+  4. Each step gives one instruction, unless the actions occur at the same
+     time.
+  5. Instructions use the active voice.
+  6. A paragraph has no more than six sentences.
+  7. Warnings and cautions are separate from the steps.
+
+  Do not count words inside code, commands, file names or headings.
+
+  Label "pass" if the documentation follows every rule, allowing at most one
+  minor lapse. Label "fail" if it breaks any rule more than once, or breaks a
+  sentence-length limit by more than five words. In the explanation, quote the
+  worst lapse, or say that there is none.
+
+  [Documentation]
+  {answer}

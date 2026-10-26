@@ -228,15 +228,16 @@
     <li>A: Opus 5 + STE</li>
     <li>B: Opus 5.5 + STE</li>
     <li>C: Opus 5.5, no STE</li>
-    <li>20 real docs tasks</li>
+    <li>3 docs tasks</li>
   </ul>
   <aside class="notes">
     <p>A: the world I wrote it for.</p>
     <p>C: what I chose by vibe.</p>
-    <p>Three judges plus an STE style judge. Cost tracked. Judge pinned. Repetitions on.</p>
+    <p>Procedure, concept page, troubleshooting. Fictional platform.</p>
+    <p>Three judges plus an STE style judge. Cost tracked. Judge pinned. 3 repetitions.</p>
     <p>Cites:</p>
     <ul>
-      <li>"A", "B", "C", "20 real docs tasks": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com</a></li>
+      <li>"A", "B", "C", "3 docs tasks": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></li>
     </ul>
   </aside>
 </section>
@@ -252,36 +253,44 @@
   </section>
   <section>
     <h3>Dataset</h3>
-    <p>TODO: screenshot</p>
+    <img src="screenshots/dataset.png" alt="Phoenix dataset unlearn-ste with three examples: a database password rotation how-to, an autoscaler cool-down concept page and an exceeded-quota troubleshooting entry." style="width: 100%;">
   </section>
   <section>
     <h3>Experiments, with cost</h3>
-    <p>TODO: screenshot</p>
+    <img src="screenshots/experiments.png" alt="Phoenix experiments for arms A, B and C, with charts for annotation scores, run latency and cost. B costs the most and is the slowest." style="width: 100%;">
   </section>
   <section>
     <h3>Compare: B vs C</h3>
-    <p>TODO: screenshot</p>
+    <img src="screenshots/compare-b-c.png" alt="Phoenix compare view, B against C. Correctness, faithfulness and relevance are 1.00 for both. The outputs for the password rotation case are side by side." style="width: 100%;">
   </section>
   <section>
     <h3>One judge explanation</h3>
-    <p>TODO: screenshot</p>
+    <p>C, password rotation, ste_style: fail</p>
+    <blockquote>"Then restart the deployment again (step 4) and recheck (step 5)." It starts with an adverb and gives two actions in one instruction.</blockquote>
   </section>
   <section>
     <h3>Cost: B vs C</h3>
-    <p>TODO: screenshot</p>
+    <img src="screenshots/cost-b-c.png" alt="Average per run. B: 58.7 seconds, 6.6k tokens, $0.13. C: 24.9 seconds, 2.9k tokens, $0.05, which is 58% less." style="width: 100%;">
   </section>
 </section>
 
 <section>
   <h2>Verdict</h2>
-  <p>Keep · Unlearn · Rewrite</p>
-  <p>TODO: headline number</p>
+  <p>Keep · Unlearn · <strong>Rewrite</strong></p>
+  <ul>
+    <li>STE style: 6/9 vs 2/9</li>
+    <li>Facts: no change</li>
+    <li>Cost: 2.4× with STE</li>
+    <li>Length: ~480 words, both</li>
+  </ul>
   <aside class="notes">
-    <p>If C holds: the vibe call is now measured.</p>
-    <p>If B wins: the eval caught a harmful deletion.</p>
+    <p>The line still changes Opus 5.5's style.</p>
+    <p>It adds nothing to the facts. It doubles the thinking.</p>
+    <p>It never fixed length: 3.5× the ground truth, with or without.</p>
+    <p>Rewrite for the real goal, then test that.</p>
     <p>Cites:</p>
     <ul>
-      <li>"Keep · Unlearn · Rewrite", headline number: my own experiment results (TODO after the runs).</li>
+      <li>"6/9 vs 2/9", "Facts: no change", "2.4×", "~480 words": my own runs of evals/ste, 26 Oct 2026. Arms B and C, 3 cases × 3 repetitions each, judge Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
     </ul>
   </aside>
 </section>

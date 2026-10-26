@@ -1,0 +1,41 @@
+# Description: explain a concept from a long design note.
+input: |
+  Write a short concept page for app teams that explains the Tui autoscaler's
+  scale-down cool-down. Base it on this excerpt from the design doc:
+
+  "The autoscaler evaluates every workload every 30 seconds. Scale-up is
+  applied immediately when utilisation exceeds the target, although a single
+  step can at most double the replica count. Scale-down, by contrast, is
+  deliberately conservative: replicas are only removed once utilisation has
+  remained below the target for the entire cool-down window, which defaults to
+  10 minutes. The motivation is to prevent flapping, where a workload with
+  bursty traffic is repeatedly scaled down and immediately back up, which
+  causes cold starts and dropped connections. Teams can tune the window with
+  `tui scale set --cooldown <minutes>` within a range of 5 to 30 minutes.
+  Longer windows suit spiky traffic but cost more, because idle replicas run
+  for longer. The autoscaler never goes below the minimum replica count, which
+  defaults to 2."
+expected: |
+  # Autoscaler cool-down
+
+  The autoscaler checks each workload every 30 seconds.
+
+  When utilisation is more than the target, the autoscaler adds replicas
+  immediately. One step can only double the number of replicas.
+
+  When utilisation is less than the target, the autoscaler waits. It removes
+  replicas only after utilisation stays below the target for the full
+  cool-down. The default cool-down is 10 minutes.
+
+  The cool-down prevents flapping. Flapping is when the autoscaler removes
+  replicas and then adds them again soon after. Flapping causes cold starts
+  and dropped connections.
+
+  To change the cool-down, use `tui scale set --cooldown <minutes>`. The
+  cool-down must be 5 to 30 minutes. A longer cool-down is better for spiky
+  traffic, but it costs more because idle replicas run for longer.
+
+  The autoscaler never goes below the minimum number of replicas. The default
+  minimum is 2.
+metadata:
+  category: description

@@ -1,0 +1,46 @@
+# Troubleshooting: turn an incident review into a runbook entry.
+input: |
+  Write a troubleshooting entry for the Tui platform docs from this incident
+  review. App teams will find it when a rollout is stuck.
+
+  Incident review, summarised: After a deploy, the checkout service sat at 3/6
+  ready for 40 minutes. The new pods never showed up in `kubectl get pods`, so
+  people assumed the rollout was just slow. `kubectl get events -n <namespace>`
+  had a FailedCreate event on the ReplicaSet: "pods ... is forbidden: exceeded
+  quota: team-compute". Each team namespace gets a ResourceQuota called
+  team-compute, 16 CPU cores of requests by default, and the new release had
+  bumped CPU requests so the total went over. You can see usage against the
+  limit with `kubectl describe resourcequota team-compute -n <namespace>`. Ways
+  out: lower the CPU requests, scale down something else in the namespace, or
+  ask for more with `tui quota request --cpu <cores>`, which the platform team
+  approves within one business day. Someone tried deleting the quota; don't,
+  the quota operator recreates it within a minute and it just wastes time.
+expected: |
+  # New pods do not start: exceeded quota
+
+  ## Symptom
+
+  The deployment shows fewer ready pods than it needs. The new pods are not in
+  the output of `kubectl get pods`. `kubectl get events -n <namespace>` shows a
+  FailedCreate event on the ReplicaSet with the text
+  "exceeded quota: team-compute".
+
+  ## Cause
+
+  Each team namespace has a ResourceQuota named team-compute. By default, it
+  allows CPU requests of 16 cores in total. The new pods request more CPU than
+  the quota has available.
+
+  ## Solution
+
+  1. Examine the CPU usage and the limit:
+     `kubectl describe resourcequota team-compute -n <namespace>`.
+  2. Do one of these steps:
+     - Decrease the CPU requests of the new pods.
+     - Scale down a different workload in the namespace.
+     - Request more CPU: `tui quota request --cpu <cores>`. The platform team
+       approves requests in one business day.
+
+  Do not delete the quota. The quota operator creates it again in one minute.
+metadata:
+  category: troubleshooting
