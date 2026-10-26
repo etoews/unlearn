@@ -12,12 +12,15 @@
 <style>
   /* contain, not cover: the logo and "Engineering" sit near the image edges, and the image's black edges hide any letterbox. */
   .reveal-viewport { background: #000 url("backgrounds/eng-background-3.jpg") center / contain no-repeat; }
-  /* Keep content in the band between the logo (top) and "Engineering" (bottom). */
-  .reveal .slides section { box-sizing: border-box; padding: 140px 0 80px; }
-  .reveal .slides section.stack { padding: 0; }
-  .reveal .slides section img { max-height: 320px; object-fit: contain; }
-  /* Lift text off the bright streaks. */
-  .reveal .slides { text-shadow: 0 0 10px #000, 0 2px 4px #000; }
+  /* Every slide is the same dark panel, sized to sit between the logo (top) and "Engineering" (bottom) so text stays readable over the streaks. reveal.js centres it vertically. */
+  .reveal .slides section:not(.stack) {
+    box-sizing: border-box; width: 1100px; height: 450px; left: 90px; padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(134, 188, 37, 0.4); border-radius: 16px;
+  }
+  /* reveal.js sets display inline from its display option, so centre the content with flex. */
+  .reveal .slides section:not(.stack) { flex-direction: column; justify-content: center; align-items: center; }
+  /* Images fill whatever height the panel has left. */
+  .reveal .slides section img { flex: 0 1 auto; min-height: 0; max-height: none; margin: 10px 0; object-fit: contain; }
   .reveal { --r-link-color: #86bc25; --r-link-color-hover: #a6d84a; }
 </style>
 </head>
@@ -380,6 +383,7 @@
     hash: true,
     width: 1280,
     height: 720,
+    display: 'flex',
     plugins: [RevealNotes, RevealHighlight, RevealZoom, RevealSearch]
   });
 </script>

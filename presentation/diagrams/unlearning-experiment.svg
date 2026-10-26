@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 900 360" width="900" height="360">
   <title>The unlearning experiment: the same cases run through three arms (baseline: old model with scaffolding; candidate: new model with scaffolding; ablation: new model without scaffolding). Comparing them tells you to keep, unlearn or add.</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
