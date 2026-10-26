@@ -7,8 +7,19 @@
 <!-- Everything loads from vendor/ and diagrams/ by relative path, so the deck runs offline from file:// and unchanged on GitHub Pages. -->
 <link rel="stylesheet" href="vendor/reveal.js/reset.css">
 <link rel="stylesheet" href="vendor/reveal.js/reveal.css">
-<link rel="stylesheet" href="vendor/reveal.js/theme/white.css">
+<link rel="stylesheet" href="vendor/reveal.js/theme/black.css">
 <link rel="stylesheet" href="vendor/reveal.js/plugin/highlight/monokai.css">
+<style>
+  /* contain, not cover: the logo and "Engineering" sit near the image edges, and the image's black edges hide any letterbox. */
+  .reveal-viewport { background: #000 url("backgrounds/eng-background-3.jpg") center / contain no-repeat; }
+  /* Keep content in the band between the logo (top) and "Engineering" (bottom). */
+  .reveal .slides section { box-sizing: border-box; padding: 140px 0 80px; }
+  .reveal .slides section.stack { padding: 0; }
+  .reveal .slides section img { max-height: 320px; object-fit: contain; }
+  /* Lift text off the bright streaks. */
+  .reveal .slides { text-shadow: 0 0 10px #000, 0 2px 4px #000; }
+  .reveal { --r-link-color: #86bc25; --r-link-color-hover: #a6d84a; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -367,6 +378,8 @@
 <script>
   Reveal.initialize({
     hash: true,
+    width: 1280,
+    height: 720,
     plugins: [RevealNotes, RevealHighlight, RevealZoom, RevealSearch]
   });
 </script>

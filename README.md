@@ -19,7 +19,9 @@ The slides are a [reveal.js](https://revealjs.com/) deck in [presentation/](pres
 - **Present locally, offline:** open `presentation/index.html` in a browser. reveal.js 6.0.2 is vendored in `presentation/vendor/reveal.js/`, so the deck needs no network connection.
 - **Online:** GitHub Pages publishes the `main` branch at <https://etoews.github.io/unlearn/presentation/>.
 
-Diagrams are standalone SVG files in `presentation/diagrams/`, referenced from the slides with `<img>`. Each file carries its own styles, because page CSS doesn't reach into an SVG loaded as an image. Phoenix screenshots for the backup slides are in `presentation/screenshots/`.
+The deck uses reveal.js's black theme over a background image, `presentation/backgrounds/eng-background-3.jpg`. The image carries a logo top left and "Engineering" bottom right, so slide padding in `index.html` keeps content in the band between them.
+
+Diagrams are standalone SVG files in `presentation/diagrams/`, referenced from the slides with `<img>`. Each file carries its own styles, because page CSS doesn't reach into an SVG loaded as an image. They use light text and Deloitte green on dark fills to suit the background. Phoenix screenshots for the backup slides are in `presentation/screenshots/`.
 
 Keys: arrows to move, `S` for the speaker view (notes go in `<aside class="notes">`), `F` for full screen, `Esc` for the overview, `Ctrl+Shift+F` to search.
 

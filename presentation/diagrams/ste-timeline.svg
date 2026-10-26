@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340">
   <title>My STE rule: added 29 Aug for Opus 5, Opus 5.5 ships 22 Sep claiming better writing, dropped 27 Sep with no reason given, still applied that afternoon</title>
   <style>
-    text { font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; fill: #222; text-anchor: middle; }
+    text { font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; fill: #fff; text-anchor: middle; }
     .date { font-size: 26px; font-weight: 700; }
     .event { font-size: 24px; }
-    .sub { font-size: 19px; fill: #666; }
-    .era { font-size: 20px; fill: #555; }
-    .axis { stroke: #222; stroke-width: 3; }
-    .dot { fill: #2a76dd; }
-    .twist { fill: #d35400; }
-    .band { fill: #eef2f7; }
-    .band55 { fill: #e3ecfa; }
+    .sub { font-size: 19px; fill: #c8c8c8; }
+    .era { font-size: 20px; fill: #c8c8c8; }
+    .axis { stroke: #ddd; stroke-width: 3; }
+    .dot { fill: #86bc25; }
+    .twist { fill: #f39c12; }
+    .band { fill: #2a2a2a; }
+    .band55 { fill: #26380d; }
   </style>
   <line class="axis" x1="30" y1="150" x2="870" y2="150"/>
 
