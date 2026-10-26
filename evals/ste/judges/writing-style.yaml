@@ -1,6 +1,6 @@
 # A binary style judge for the --judge-file option of the ai-evals skill.
 # It checks a subset of the ASD-STE100 writing rules that a judge can count.
-name: ste_style
+name: writing_style       # first letter sets the Phoenix chart colour; "w" is blue
 positive: pass
 negative: fail
 prompt: |
