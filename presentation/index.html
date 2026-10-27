@@ -29,6 +29,11 @@
   .reveal .slides section .intro img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #86bc25; }
   .reveal .intro h2 { margin-bottom: 0.4em; }
   .reveal .intro p { margin: 0.3em 0; }
+  /* Tables with many columns: smaller text, one line per cell. */
+  .reveal table.compact { font-size: 0.8em; }
+  .reveal table.compact th, .reveal table.compact td { white-space: nowrap; }
+  .reveal .book { display: flex; align-items: center; gap: 60px; text-align: left; }
+  .reveal .slides section .book img { height: 380px; }
   /* Section separators: a larger heading on its own. */
   .reveal .separator h2 { font-size: 2em; }
 </style>
@@ -154,29 +159,53 @@
 
 <section>
   <h2>Every generation changes</h2>
-  <table>
+  <table class="compact">
     <thead>
-      <tr><th>Version</th><th>From</th><th>To</th></tr>
+      <tr><th>Version</th><th>From</th><th>To</th><th>Why</th></tr>
     </thead>
     <tbody>
-      <tr><td>Opus 4.5</td><td>CRITICAL: MUST use</td><td>Use when</td></tr>
-      <tr><td>Opus 5</td><td>Verify your work</td><td>Delete</td></tr>
-      <tr><td>Fable 5.1</td><td>No bullets</td><td>Say when to format</td></tr>
-      <tr><td>Opus 5.5</td><td>Think carefully</td><td>Delete</td></tr>
+      <tr><td>Opus 4.5</td><td>CRITICAL: MUST use</td><td>Use when</td><td>Overtriggers</td></tr>
+      <tr><td>Opus 5</td><td>Verify your work</td><td>Delete</td><td>Self-verifies</td></tr>
+      <tr><td>Opus 5.5</td><td>Think carefully</td><td>Delete</td><td>Slower replies</td></tr>
+      <tr><td>Fable 5.1</td><td>No bullets</td><td>Say when to format</td><td>Under-formats</td></tr>
     </tbody>
   </table>
   <aside class="notes">
-    <p>Each row is a line that was right for an older model, and the named model's prompting guide says to change it.</p>
+    <p>Each row is a line that was right for an older model, and the named model's prompting guide says to change it and why.</p>
     <p>Opus 4.5 is more responsive to the system prompt, so "CRITICAL: You MUST use this tool when..." makes it overtrigger; soften it to "Use this tool when...".</p>
     <p>Opus 5 verifies its own work, so "Verify your work" only causes over-verification; delete it.</p>
-    <p>Fable 5.1 already under-formats, so "No bullet points" pushes it the wrong way; say when formatting is appropriate instead.</p>
     <p>Removing "Think carefully" made Opus 5.5 reply sooner with no clear loss in quality.</p>
+    <p>Fable 5.1 already under-formats, so "No bullet points" pushes it the wrong way; say when formatting is appropriate instead.</p>
     <p>Citations:</p>
     <ul>
-      <li>"Opus 4.5", "CRITICAL: MUST use" → "Use when": "Prompting best practices", Claude Platform Docs ("Claude Opus 4.5 and Claude Opus 4.6 are also more responsive to the system prompt than previous models. If your prompts were designed to reduce undertriggering on tools or skills, these models might now overtrigger." and "Where you might have said "CRITICAL: You MUST use this tool when...," you can use more normal prompting such as "Use this tool when..." instead."). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
-      <li>"Opus 5", "Verify your work" → "Delete": "Prompting Claude Opus 5", Claude Platform Docs ("Claude Opus 5 verifies its own work without being told to." and "instructions like these cause over-verification on Claude Opus 5, and removing them reduces wasted tokens with no loss in quality"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5">platform.claude.com</a> · "Prompting best practices" ("On Claude Opus 5, remove these instructions rather than rewriting them."). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
-      <li>"Fable 5.1", "No bullets" → "Say when to format": "Prompting Claude Fable 5.1", Claude Platform Docs ("Earlier models overused bullets and bold in chat, and many prompts carry anti-formatting rules written to reduce that. Claude Fable 5.1 tends toward the opposite: it uses bold less and is less likely to reach for headers, lists, or quotation marks. If your prompt contains anti-formatting language, remove it or replace it with a rule that says when specific formatting is appropriate"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1">platform.claude.com</a></li>
-      <li>"Opus 5.5", "Think carefully" → "Delete": "Prompting Claude Opus 5.5", Claude Platform Docs ("if your system prompt contains instructions that tell Claude to think carefully before answering, consider removing them for Claude Opus 5.5" and "removing such a line made replies start sooner, with no clear decline in the quality of the reply"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">platform.claude.com</a></li>
+      <li>"Opus 4.5", "CRITICAL: MUST use" → "Use when", "Overtriggers": "Prompting best practices", Claude Platform Docs ("Claude Opus 4.5 and Claude Opus 4.6 are also more responsive to the system prompt than previous models. If your prompts were designed to reduce undertriggering on tools or skills, these models might now overtrigger." and "Where you might have said "CRITICAL: You MUST use this tool when...," you can use more normal prompting such as "Use this tool when..." instead."). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
+      <li>"Opus 5", "Verify your work" → "Delete", "Self-verifies": "Prompting Claude Opus 5", Claude Platform Docs ("Claude Opus 5 verifies its own work without being told to." and "instructions like these cause over-verification on Claude Opus 5, and removing them reduces wasted tokens with no loss in quality"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5">platform.claude.com</a> · "Prompting best practices" ("On Claude Opus 5, remove these instructions rather than rewriting them."). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
+      <li>"Opus 5.5", "Think carefully" → "Delete", "Slower replies": "Prompting Claude Opus 5.5", Claude Platform Docs ("if your system prompt contains instructions that tell Claude to think carefully before answering, consider removing them for Claude Opus 5.5" and "removing such a line made replies start sooner, with no clear decline in the quality of the reply"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">platform.claude.com</a></li>
+      <li>"Fable 5.1", "No bullets" → "Say when to format", "Under-formats": "Prompting Claude Fable 5.1", Claude Platform Docs ("Earlier models overused bullets and bold in chat, and many prompts carry anti-formatting rules written to reduce that. Claude Fable 5.1 tends toward the opposite: it uses bold less and is less likely to reach for headers, lists, or quotation marks. If your prompt contains anti-formatting language, remove it or replace it with a rule that says when specific formatting is appropriate"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1">platform.claude.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <div class="book">
+    <img src="images/thinking-fast-and-slow.jpg" alt="Cover of Thinking, Fast and Slow by Daniel Kahneman.">
+    <div>
+      <h2>Thinking, Fast and Slow</h2>
+      <ul>
+        <li>System 1: fast, automatic</li>
+        <li>System 2: slow, effortful</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Daniel Kahneman's 2011 book splits thinking into two systems.</p>
+    <p>System 1 is fast and automatic, and it is where practised habits live.</p>
+    <p>System 2 is slow and effortful, and it is the one that actually checks.</p>
+    <p>Citations:</p>
+    <ul>
+      <li>Book cover, "Thinking, Fast and Slow": "Thinking, Fast and Slow", Wikipedia, revision 8 Sep 2026 ("Thinking, Fast and Slow is a 2011 popular science book by the Israeli-American psychologist Daniel Kahneman."). <a href="https://en.wikipedia.org/w/index.php?title=Thinking,_Fast_and_Slow&amp;oldid=1373846268">wikipedia.org</a></li>
+      <li>"System 1: fast, automatic": same Wikipedia revision ("Fast, automatic, frequent, emotional, stereotypic, unconscious").</li>
+      <li>"System 2: slow, effortful": same Wikipedia revision ("Slow, effortful, infrequent, logical, calculating, conscious").</li>
     </ul>
   </aside>
 </section>
