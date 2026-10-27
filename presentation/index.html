@@ -476,7 +476,7 @@
 
 <section>
   <h2>Verdict</h2>
-  <p>Keep · <strong>Upsert</strong> · Unlearn</p>
+  <p>Keep · Upsert · <strong>Unlearn</strong></p>
   <ul>
     <li>STE style: 6/9 vs 2/9</li>
     <li>Facts: no change</li>
@@ -484,7 +484,7 @@
     <li>Length: ~480 words, both</li>
   </ul>
   <aside class="notes">
-    <p>The verdict is neither keep nor unlearn but upsert: rewrite the rule for its real goal, then test that.</p>
+    <p>The verdict is unlearn, and I deleted the STE line: it still shifts the style, but adds no accuracy, costs 2.4 times as much and never fixed length.</p>
     <p>STE style passed 6 of 9 runs with the rule and 2 of 9 without, so the line still changes Opus 5.5's style.</p>
     <p>Fact scores didn't change, so the rule adds nothing to accuracy.</p>
     <p>Runs with STE cost 2.4 times as much, because the rule doubles the thinking.</p>
