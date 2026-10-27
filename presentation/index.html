@@ -24,7 +24,7 @@
   .reveal { --r-link-color: #86bc25; --r-link-color-hover: #a6d84a; }
   .reveal p.quote { font-size: 0.6em; margin: 12px 0; }
   .reveal p.quote cite { font-size: 0.8em; font-style: normal; color: #86bc25; }
-  .reveal p.subtitle { font-size: 0.7em; color: #c8c8c8; margin: 0 0 10px; }
+  .reveal p.subtitle { font-size: 0.7em; color: #c8c8c8; margin: -1em 0 10px; }
   .reveal .intro { display: flex; align-items: center; gap: 60px; text-align: left; }
   .reveal .slides section .intro img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #86bc25; }
   .reveal .intro h2 { margin-bottom: 0.4em; }
@@ -127,10 +127,10 @@
 
 <section>
   <h2>My STE rule</h2>
-  <p class="subtitle">ASD-STE100 Simplified Technical English</p>
+  <p class="subtitle">Always use ASD-STE100 Simplified Technical English (STE) for README.md, ARCHITECTURE.md, etc type of documentation.</p>
   <img src="diagrams/ste-timeline.svg" alt="Timeline across the Opus 5 and Opus 5.5 eras: 24 Jul, Opus 5 ships. 29 Aug, STE rule added. 22 Sep, Opus 5.5 ships. 27 Sep, rule dropped." style="width: 100%;">
   <aside class="notes">
-    <p>STE is ASD-STE100 Simplified Technical English, a controlled language for aerospace maintenance writing.</p>
+    <p>The rule told Claude to write docs in ASD-STE100 Simplified Technical English, a controlled language for aerospace maintenance writing.</p>
     <p>On 24 July Opus 5 shipped, and it was far wordier than Opus 4.5.</p>
     <p>On 29 August I added the STE rule to rein in that verbosity.</p>
     <p>On 22 September Opus 5.5 shipped, claiming better writing.</p>
@@ -140,7 +140,7 @@
       <li>"ASD-STE100 Simplified Technical English": ASD-STE100 Simplified Technical English, Issue 9, ASD, 15 Jan 2025. <a href="https://www.asd-ste100.org/">asd-ste100.org</a> · "Simplified Technical English", Wikipedia ("wanted a standardized form of English for aircraft maintenance documentation"). <a href="https://en.wikipedia.org/wiki/Simplified_Technical_English">wikipedia.org</a></li>
       <li>"24 Jul · Opus 5 ships": Brandom, R., "Anthropic launches Opus 5", TechCrunch, 24 Jul 2026. <a href="https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/">techcrunch.com</a></li>
       <li>"Far wordier" (spoken): paddo.dev, "A Dial Worth Turning", 2 Sep 2026 ("510 words per response for Opus 5, against 158 for Opus 4.5"). <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
-      <li>"29 Aug · Added": my own CLAUDE.md commit, 29 Aug 2026.</li>
+      <li>"29 Aug · Added", "Always use ASD-STE100 Simplified Technical English (STE)": my own CLAUDE.md commit, 29 Aug 2026.</li>
       <li>"22 Sep · Opus 5.5 ships", "better writing" (spoken): Anthropic, "Claude Opus 5.5", 22 Sep 2026 ("major improvements to the way Opus 5.5 writes and communicates"). <a href="https://www.anthropic.com/claude-opus-5-5">anthropic.com</a></li>
       <li>"27 Sep · Dropped", "no reason" (spoken): my own CLAUDE.md commit, 27 Sep 2026.</li>
     </ul>
@@ -390,6 +390,7 @@
 
 <section>
   <h2>Should STE stay?</h2>
+  <p class="subtitle">Always use ASD-STE100 Simplified Technical English (STE) for README.md, ARCHITECTURE.md, etc type of documentation.</p>
   <ul>
     <li>A: Opus 5 + STE</li>
     <li>B: Opus 5.5 + STE</li>
@@ -397,12 +398,14 @@
     <li>3 docs tasks</li>
   </ul>
   <aside class="notes">
+    <p>The rule on screen is the exact line from my CLAUDE.md that each experiment keeps or drops.</p>
     <p>Experiment A, Opus 5 with STE, is the world I wrote the rule for.</p>
     <p>Experiment B, Opus 5.5 with STE, tests whether the rule still helps the new model.</p>
     <p>Experiment C, Opus 5.5 without STE, is what I chose by vibe.</p>
     <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
     <p>Citations:</p>
     <ul>
+      <li>"Always use ASD-STE100 Simplified Technical English (STE)": my own CLAUDE.md commit, 29 Aug 2026.</li>
       <li>"A", "B", "C", "3 docs tasks": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></li>
     </ul>
   </aside>
