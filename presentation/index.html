@@ -40,8 +40,9 @@
   .reveal .logo-title h2 { font-size: 2em; margin: 0; }
   /* The verdict's decisions sit tight under the heading, apart from the evidence below. */
   .reveal p.decisions { margin: -0.4em 0 1em; }
-  /* A fragment that explains the bullet it follows. */
-  .reveal .why { font-size: 0.8em; color: #c8c8c8; }
+  /* Verdict evidence: the numbers appear together, then each description in turn. */
+  .reveal .evidence { display: grid; grid-template-columns: auto auto; justify-content: center; gap: 0 30px; font-size: 0.85em; text-align: left; }
+  .reveal .evidence .num { text-align: right; font-weight: 700; color: #86bc25; }
   /* Section separators: a larger heading on its own. */
   .reveal .separator h2 { font-size: 2em; }
 </style>
@@ -481,21 +482,24 @@
 <section>
   <h2>Verdict</h2>
   <p class="decisions">Keep · Upsert · <strong>Unlearn</strong></p>
-  <ul>
-    <li class="fragment">STE style: 6/9 vs 2/9 <span class="fragment why">→ still shifts style</span></li>
-    <li class="fragment">Facts: no change <span class="fragment why">→ no accuracy gain</span></li>
-    <li class="fragment">Cost: 2.4× with STE <span class="fragment why">→ doubles the thinking</span></li>
-    <li class="fragment">Length: ~480 words, both <span class="fragment why">→ never fixed length</span></li>
-  </ul>
+  <div class="evidence">
+    <span class="num fragment" data-fragment-index="0">6/9</span><span class="fragment" data-fragment-index="1">STE style passes with the rule</span>
+    <span class="num fragment" data-fragment-index="0">2/9</span><span class="fragment" data-fragment-index="2">STE style passes without it</span>
+    <span class="num fragment" data-fragment-index="0">0</span><span class="fragment" data-fragment-index="3">change in facts</span>
+    <span class="num fragment" data-fragment-index="0">2.4×</span><span class="fragment" data-fragment-index="4">the cost with STE</span>
+    <span class="num fragment" data-fragment-index="0">~480</span><span class="fragment" data-fragment-index="5">words, with or without STE</span>
+  </div>
   <aside class="notes">
     <p>The verdict is unlearn, and I deleted the STE line: it still shifts the style, but adds no accuracy, costs 2.4 times as much and never fixed length.</p>
-    <p>STE style passed 6 of 9 runs with the rule and 2 of 9 without, so the line still changes Opus 5.5's style.</p>
-    <p>Fact scores didn't change, so the rule adds nothing to accuracy.</p>
+    <p>The numbers come first, then I explain each one in turn.</p>
+    <p>STE style passed 6 of 9 runs with the rule, so the line still changes Opus 5.5's style.</p>
+    <p>Without the rule, STE style passed only 2 of 9 runs.</p>
+    <p>Fact scores didn't change at all, so the rule adds nothing to accuracy.</p>
     <p>Runs with STE cost 2.4 times as much, because the rule doubles the thinking.</p>
     <p>Both experiments averaged about 480 words, 3.5 times the ground truth, so the rule never fixed length.</p>
     <p>Citations:</p>
     <ul>
-      <li>"6/9 vs 2/9", "Facts: no change", "2.4×", "~480 words": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per experiment (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      <li>"6/9", "2/9", "0", "2.4×", "~480": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per experiment (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
     </ul>
   </aside>
 </section>
