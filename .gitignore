@@ -3,3 +3,5 @@
 .env.*
 # Playwright MCP snapshots and logs; they can hold private research pages.
 .playwright-mcp/
+# Local copy of the private research notes; research material stays out of the repo.
+research/
