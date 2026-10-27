@@ -155,20 +155,20 @@
 <section>
   <h2>Every generation: delete this</h2>
   <ul>
-    <li>"CRITICAL: You MUST"</li>
+    <li>"CRITICAL: You MUST use this tool when..."<br>→ "Use this tool when..."</li>
     <li>"Verify your work"</li>
     <li>"No bullet points"</li>
     <li>"Think carefully"</li>
   </ul>
   <aside class="notes">
     <p>Each line was right for an older model, and each new prompting guide says to delete it.</p>
-    <p>"CRITICAL: You MUST" makes newer, more responsive models overtrigger.</p>
+    <p>"CRITICAL: You MUST use this tool when..." makes newer, more responsive models overtrigger, so soften it to "Use this tool when...".</p>
     <p>"Verify your work" now causes unnecessary testing, and Anthropic and OpenAI both said so in the same month.</p>
     <p>"No bullet points" now pushes the model the wrong way.</p>
     <p>Removing "Think carefully" made Opus 5.5 reply sooner with no clear loss in quality.</p>
     <p>Cites:</p>
     <ul>
-      <li>"CRITICAL: You MUST": "Prompting best practices", Claude Platform Docs (more responsive to the system prompt; now overtriggers). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
+      <li>"CRITICAL: You MUST use this tool when..." → "Use this tool when...": "Prompting best practices", Claude Platform Docs (Opus 4.5 and 4.6 are "more responsive to the system prompt… might now overtrigger"; "you can use more normal prompting such as 'Use this tool when...' instead"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
       <li>"Verify your work": "Prompting Claude Opus 5" ("remove these instructions rather than rewriting them"). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5">platform.claude.com</a></li>
       <li>"Verify your work", second vendor: OpenAI, "Rethinking skills and prompts for GPT-6 Astra" ("the same instructions can lead to unnecessary testing"). Author and date not on the page; verify before quoting. <a href="https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra">developers.openai.com</a></li>
       <li>"No bullet points": "Prompting Claude Fable 5.1" (anti-formatting rules now push the model the wrong way). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1">platform.claude.com</a></li>
