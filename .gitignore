@@ -1,3 +1,5 @@
 .DS_Store
 .env
 .env.*
+# Playwright MCP snapshots and logs; they can hold private research pages.
+.playwright-mcp/
