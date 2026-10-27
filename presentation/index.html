@@ -35,6 +35,9 @@
   .reveal .book { display: flex; align-items: center; gap: 40px; text-align: left; }
   .reveal .book ul { font-size: 0.9em; }
   .reveal .slides section .book img { height: 380px; }
+  .reveal .logo-title { display: flex; align-items: center; gap: 30px; }
+  .reveal .slides section .logo-title img { height: 200px; }
+  .reveal .logo-title h2 { font-size: 2em; margin: 0; }
   /* Section separators: a larger heading on its own. */
   .reveal .separator h2 { font-size: 2em; }
 </style>
@@ -402,8 +405,12 @@
 
 <section>
   <section>
-    <h2>→ Phoenix</h2>
+    <div class="logo-title">
+      <img src="images/phoenix.webp" alt="Arize Phoenix logo: a stylised blue phoenix in flight.">
+      <h2>Phoenix</h2>
+    </div>
     <aside class="notes">
+      <p>Phoenix is where the eval's dataset, experiments and judge scores live.</p>
       <p>Show the dataset, the experiments with cost, B against C, one judge explanation, then the cost of B against C.</p>
       <p>If the demo fails, press down for the backup screenshots.</p>
       <p>Citations: none (live demo).</p>
