@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 900 360" width="900" height="360">
-  <title>The unlearning experiment: the same cases run through three arms (baseline: old model with scaffolding; candidate: new model with scaffolding; ablation: new model without scaffolding). Comparing them tells you to keep, unlearn or add.</title>
+  <title>The unlearning experiment: the same cases run through three arms (baseline: old model with scaffolding; candidate: new model with scaffolding; deleted: new model without scaffolding). Comparing them tells you to keep, unlearn or add.</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#ddd"/>
@@ -28,7 +28,7 @@
   <text class="sub" x="385" y="232">new model + scaffolding</text>
 
   <rect class="arm" x="235" y="300" width="300" height="80" rx="8"/>
-  <text class="name" x="385" y="334">Ablation</text>
+  <text class="name" x="385" y="334">Deleted</text>
   <text class="sub" x="385" y="362">new model, scaffolding removed</text>
 
   <rect class="box" x="590" y="170" width="130" height="80" rx="8"/>

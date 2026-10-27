@@ -301,6 +301,38 @@
 </section>
 
 <section>
+  <h2>Metrics</h2>
+  <table class="compact">
+    <thead>
+      <tr><th>Metric</th><th>Definition</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Correctness</td><td>Matches the ground truth's facts</td></tr>
+      <tr><td>Faithfulness</td><td>Invents nothing beyond the ground truth</td></tr>
+      <tr><td>Relevance</td><td>Addresses the question</td></tr>
+      <tr><td>Writing style</td><td>Follows the STE writing rules</td></tr>
+      <tr><td>...</td><td>There are many more</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes">
+    <p>Each metric is one judge that labels every output pass or fail.</p>
+    <p>Correctness checks that the answer matches the facts in the ground truth.</p>
+    <p>Faithfulness checks that the answer doesn't contradict the ground truth or make things up beyond it.</p>
+    <p>Relevance checks that the answer addresses the question at all.</p>
+    <p>Writing style is my own judge for a countable subset of the STE writing rules.</p>
+    <p>Phoenix ships many more pre-built metrics, and you can write your own for whatever your scaffolding is meant to fix.</p>
+    <p>Citations:</p>
+    <ul>
+      <li>"Correctness", "Matches the ground truth's facts": the ai-evals skill, references/metrics.md ("Does the answer match the ground truth's facts?"). <a href="https://github.com/etoews/skills/blob/main/skills/ai-evals/references/metrics.md">github.com</a></li>
+      <li>"Faithfulness", "Invents nothing beyond the ground truth": same file ("Does the answer avoid contradicting or fabricating beyond the ground truth?").</li>
+      <li>"Relevance", "Addresses the question": same file ("Does the answer actually address the question?").</li>
+      <li>"Writing style", "Follows the STE writing rules": my own judge, evals/ste/judges/writing-style.yaml ("writing rules of ASD-STE100 Simplified Technical English (STE)"). <a href="https://github.com/etoews/unlearn/blob/main/evals/ste/judges/writing-style.yaml">github.com/etoews/unlearn</a></li>
+      <li>"There are many more": Arize Phoenix, "Pre-built Metrics" ("Phoenix provides pre-built evaluation metrics that can be used out of the box to assess LLM application quality."). <a href="https://arize.com/docs/phoenix/evaluation/pre-built-metrics">arize.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
   <h2>Read results honestly</h2>
   <ul>
     <li>Run it again</li>
@@ -321,16 +353,16 @@
 
 <section>
   <h2>The unlearning experiment</h2>
-  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and ablation (new model, scaffolding removed). Comparing them leads to keep, unlearn or add." style="width: 100%;">
+  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and deleted (new model, scaffolding removed). Comparing them leads to keep, unlearn or add." style="width: 100%;">
   <aside class="notes">
     <p>The same cases run through all three arms.</p>
     <p>The baseline is the old model with your scaffolding.</p>
     <p>The candidate is the new model with your scaffolding.</p>
-    <p>The ablation is the new model with the scaffolding removed, which is an eval where you delete things.</p>
+    <p>The deleted arm is the new model with the scaffolding removed, which Boris Cherny calls an ablation: an eval where you delete things.</p>
     <p>Comparing the arms tells you whether to keep the scaffolding, unlearn it or add something new.</p>
     <p>Citations:</p>
     <ul>
-      <li>"Ablation": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
+      <li>"Deleted": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
     </ul>
   </aside>
 </section>

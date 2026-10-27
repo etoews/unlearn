@@ -19,7 +19,7 @@ I added the line because Opus 5 wrote long, elliptical docs. Opus 5.5 claims bet
 |---|---|---|
 | A: baseline | Opus 5 | `ste.md` |
 | B: candidate | Opus 5.5 | `ste.md` |
-| C: ablation | Opus 5.5 | `base.md` |
+| C: deleted | Opus 5.5 | `base.md` |
 
 All arms use effort `xhigh` and 3 repetitions per case. The judge is pinned to Fable 5.1.
 
