@@ -22,6 +22,8 @@
   /* Images fill whatever height the panel has left. */
   .reveal .slides section img { flex: 0 1 auto; min-height: 0; max-height: none; margin: 10px 0; object-fit: contain; }
   .reveal { --r-link-color: #86bc25; --r-link-color-hover: #a6d84a; }
+  .reveal p.quote { font-size: 0.6em; margin: 12px 0; }
+  .reveal p.quote cite { font-size: 0.8em; font-style: normal; color: #86bc25; }
 </style>
 </head>
 <body>
@@ -32,26 +34,23 @@
 
 <section>
   <h1>Unlearn with AI Evals</h1>
-  <p>Everett Toews · CloudNative.AI Melbourne</p>
+  <p>Everett Toews<br>Cloud Native AI Summit, Melbourne</p>
 </section>
 
 <section>
   <h2>Learn, unlearn, relearn</h2>
-  <p><s>"The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn."</s></p>
-  <ul>
-    <li>Toffler, 1970</li>
-    <li>Gerjuoy, quoted by Toffler</li>
-    <li>"how and <em>when</em>"</li>
-  </ul>
+  <p class="fragment strike quote">"The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn."</p>
+  <p class="fragment quote">"By instructing students how to learn, unlearn and relearn, a powerful new dimension can be added to education."<br><cite>Alvin Toffler, <em>Future Shock</em>, 1970</cite></p>
+  <p class="fragment quote">"Tomorrow's illiterate will not be the man who can't read; he will be the man who has not learned how to learn."<br><cite>Herbert Gerjuoy, quoted in <em>Future Shock</em></cite></p>
   <aside class="notes">
     <p>The famous line merges two passages.</p>
     <p>Even the unlearning quote needed unlearning.</p>
-    <p><em>When</em> is the talk.</p>
+    <p>Same chapter: "how and <em>when</em> to replace them". <em>When</em> is the talk.</p>
     <p>Cites:</p>
     <ul>
-      <li>"Toffler, 1970": <em>Future Shock</em>, ch. 18 ("learn, unlearn and relearn"). <a href="https://archive.org/details/FutureShock_143">archive.org</a></li>
-      <li>"Gerjuoy, quoted by Toffler": <em>Future Shock</em>, ch. 18, next paragraph ("Tomorrow's illiterate will not be the man who can't read").</li>
-      <li>"how and when": <em>Future Shock</em>, ch. 18 ("how to discard old ideas, how and when to replace them").</li>
+      <li>"By instructing students how to learn, unlearn and relearn": Toffler, A., <em>Future Shock</em>, 1970, ch. 18. <a href="https://archive.org/details/FutureShock_143">archive.org</a></li>
+      <li>"Tomorrow's illiterate will not be the man who can't read": <em>Future Shock</em>, ch. 18, same paragraph, quoting Herbert Gerjuoy.</li>
+      <li>"how and when" (spoken): <em>Future Shock</em>, ch. 18 ("Students must learn how to discard old ideas, how and when to replace them").</li>
       <li>Struck-through quote is a misattribution: <a href="https://wist.info/toffler-alvin/">wist.info</a> · <a href="https://kottke.org/23/12/learning-unlearning-and-relearning">kottke.org</a></li>
     </ul>
   </aside>
