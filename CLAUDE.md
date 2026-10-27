@@ -12,7 +12,7 @@ A reveal.js deck for a 25-minute talk. README.md covers presenting, publishing a
 ## Slides
 
 - Bullets are cues the speaker talks to, not text to read. Use at most six words per bullet and four bullets per slide.
-- Speaker notes are memory aids, not a script. Write two to four short lines, then `Cites:`. Each citation starts with the on-screen text it supports. Sources are in the research artifact: https://claude.ai/artifact/BcfgdHtDnkoWv8muvxWgEd
+- Speaker notes are memory aids, not a script. Write one full, succinct sentence for each bullet, concept or element on the slide, then `Cites:`. Every slide gets notes, including diagrams and backup screenshots. Each citation starts with the on-screen text it supports. Sources are in the research artifact: https://claude.ai/artifact/BcfgdHtDnkoWv8muvxWgEd
 - Diagrams are separate SVG files in `presentation/diagrams/`, loaded with `<img>`. Each file carries its own `<style>`, because page CSS and web fonts don't reach into an `<img>` SVG.
 
 ## Checking a change

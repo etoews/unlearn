@@ -35,6 +35,10 @@
 <section>
   <h1>Unlearn with AI Evals</h1>
   <p>Everett Toews<br>Cloud Native AI Summit, Melbourne</p>
+  <aside class="notes">
+    <p>This talk is about knowing when to unlearn the workarounds we wrote for older models.</p>
+    <p>Cites: none.</p>
+  </aside>
 </section>
 
 <section>
@@ -43,9 +47,10 @@
   <p class="fragment quote">"By instructing students how to learn, unlearn and relearn, a powerful new dimension can be added to education."<br><cite>Alvin Toffler, <em>Future Shock</em>, 1970</cite></p>
   <p class="fragment quote">"Tomorrow's illiterate will not be the man who can't read; he will be the man who has not learned how to learn."<br><cite>Herbert Gerjuoy, quoted in <em>Future Shock</em></cite></p>
   <aside class="notes">
-    <p>The famous line merges two passages.</p>
-    <p>Even the unlearning quote needed unlearning.</p>
-    <p>Same chapter: "how and <em>when</em> to replace them". <em>When</em> is the talk.</p>
+    <p>The famous quote is struck out because it merges two passages, so even the unlearning quote needed unlearning.</p>
+    <p>Toffler's real line says teaching students to learn, unlearn and relearn adds a new dimension to education.</p>
+    <p>The "illiterate" half belongs to Herbert Gerjuoy, whom Toffler quotes in the next paragraph.</p>
+    <p>The same chapter says to learn "how and <em>when</em>" to replace old ideas, and <em>when</em> is what this talk is about.</p>
     <p>Cites:</p>
     <ul>
       <li>"By instructing students how to learn, unlearn and relearn": Toffler, A., <em>Future Shock</em>, 1970, ch. 18. <a href="https://archive.org/details/FutureShock_143">archive.org</a></li>
@@ -63,10 +68,11 @@
   <img src="diagrams/ste-timeline.svg" alt="Timeline: 29 Aug, STE rule added for Opus 5. 22 Sep, Opus 5.5 ships claiming better writing. 27 Sep, rule dropped with no reason given. 27 Sep afternoon, an older session still applied it, fixing 96 semicolons." style="width: 100%;">
   <p>Was I right?</p>
   <aside class="notes">
-    <p>Added for Opus 5's verbosity.</p>
-    <p>Dropped by vibe. No reason recorded.</p>
-    <p>A stale session still applied it.</p>
-    <p>Leave the question open until the verdict.</p>
+    <p>On 29 August I added an STE rule to rein in Opus 5's verbosity.</p>
+    <p>On 22 September Opus 5.5 shipped, claiming better writing.</p>
+    <p>On 27 September I dropped the rule by vibe and recorded no reason.</p>
+    <p>That afternoon an older session still applied the rule and fixed 96 semicolons.</p>
+    <p>Leave "Was I right?" open until the verdict.</p>
     <p>Cites:</p>
     <ul>
       <li>"29 Aug · Added": my dotfiles commit, 29 Aug 2026 (private repo).</li>
@@ -86,9 +92,9 @@
     <li>Your system prompt: −80%</li>
   </ul>
   <aside class="notes">
-    <p>Fingers: habits outlive rules.</p>
-    <p>Memory: my em-dash ban survives in copies.</p>
-    <p>System prompt: Anthropic cut 80%, gated on evals.</p>
+    <p>Habits in your fingers outlive the rules that created them.</p>
+    <p>Memory files keep old rules alive, like my em-dash ban that survives in copies.</p>
+    <p>Anthropic cut over 80% of Claude Code's system prompt, but only after its evals showed no loss.</p>
     <p>Cites:</p>
     <ul>
       <li>"Your memory files": my own memory and prompt files still hold an em-dash ban removed from CLAUDE.md in Aug 2026.</li>
@@ -106,9 +112,11 @@
     <li>"Think carefully"</li>
   </ul>
   <aside class="notes">
-    <p>Each was right for an older model.</p>
-    <p>Each new guide says remove it.</p>
-    <p>Two vendors, same month.</p>
+    <p>Each line was right for an older model, and each new prompting guide says to delete it.</p>
+    <p>"CRITICAL: You MUST" makes newer, more responsive models overtrigger.</p>
+    <p>"Verify your work" now causes unnecessary testing, and Anthropic and OpenAI both said so in the same month.</p>
+    <p>"No bullet points" now pushes the model the wrong way.</p>
+    <p>Removing "Think carefully" made Opus 5.5 reply sooner with no clear loss in quality.</p>
     <p>Cites:</p>
     <ul>
       <li>"CRITICAL: You MUST": "Prompting best practices", Claude Platform Docs (more responsive to the system prompt; now overtriggers). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">platform.claude.com</a></li>
@@ -128,10 +136,10 @@
     <li>Losses loom larger</li>
   </ul>
   <aside class="notes">
-    <p>System 1 applies old patterns.</p>
-    <p>A 3-prompt vibe check passes a 1-in-4 failure 42% of the time.</p>
-    <p>Deleting risks a visible loss. Keeping hides a gain.</p>
-    <p>The rule you perfected is the hardest to drop.</p>
+    <p>System 1 fires first and applies old patterns to a new model.</p>
+    <p>A three-prompt vibe check passes a prompt that fails one time in four 42% of the time.</p>
+    <p>Deleting a rule risks a visible loss while keeping it only hides a gain, so we keep it.</p>
+    <p>The rule you worked hardest to perfect is the hardest to drop.</p>
     <p>Cites:</p>
     <ul>
       <li>"Habit fires first": "Thinking, Fast and Slow", Wikipedia, revision 8 Sep 2026 ("associating new information with existing patterns"). <a href="https://en.wikipedia.org/w/index.php?title=Thinking,_Fast_and_Slow&amp;oldid=1373846268">wikipedia.org</a></li>
@@ -152,9 +160,9 @@
     <li>You: vibes</li>
   </ul>
   <aside class="notes">
-    <p>With evals you upgrade in days.</p>
-    <p>Anthropic gated its 80% cut on evals.</p>
-    <p>Users are told to "observe".</p>
+    <p>Teams with evals upgrade to a new model in days, while teams without spend weeks testing.</p>
+    <p>Anthropic ran its evals before it cut 80% of its system prompt.</p>
+    <p>Users are told to test changes by observing behaviour, which is vibes.</p>
     <p>Cites:</p>
     <ul>
       <li>"Weeks → days": Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("teams without evals face weeks of testing while competitors with evals can… upgrade in days"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
@@ -168,10 +176,11 @@
   <h2>Anatomy of an eval</h2>
   <img src="diagrams/eval-anatomy.svg" alt="Cases with input and ground truth flow into a config (model, effort, system prompt), which produces one output per case. Judges, one per metric, score the outputs into results: scores, reasons and cost. Config plus outputs is one experiment." style="width: 100%;">
   <aside class="notes">
-    <p>Cases have ground truth.</p>
-    <p>An experiment is one config over all cases.</p>
-    <p>Judges score each case.</p>
-    <p>Running example: STE.</p>
+    <p>Each case pairs an input with a ground truth answer.</p>
+    <p>The config is the model, effort and system prompt under test.</p>
+    <p>The config produces one output per case, and the config plus its outputs is one experiment.</p>
+    <p>Judges score each output, with one judge per metric.</p>
+    <p>Results hold each score, the judge's reason and the cost, using the STE rule as the running example.</p>
     <p>Cites:</p>
     <ul>
       <li>"Cases… ground truth", "Judges": Husain, H. &amp; Shankar, S., "AI Evals: Everything You Need to Know", Sep 2026. <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
@@ -188,9 +197,9 @@
     <li>Pin it. Binary. Read why.</li>
   </ul>
   <aside class="notes">
-    <p>A reference answer cut false passes from 14/20 to 3/20.</p>
-    <p>Verbosity bias meets a verbose model.</p>
-    <p>Pin the judge. Pass/fail labels. Read the explanations.</p>
+    <p>Giving the judge a reference answer cut false passes on wrong maths answers from 14 in 20 to 3 in 20.</p>
+    <p>Judges favour longer answers, which matters with a model as verbose as Opus 5.</p>
+    <p>Pin the judge model, use pass/fail labels and read the judge's explanations.</p>
     <p>Cites:</p>
     <ul>
       <li>"Give it the answer": Zheng, L. et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", 2023 (wrong maths answers accepted: 14/20 default → 3/20 with reference). <a href="https://arxiv.org/abs/2306.05685">arXiv</a></li>
@@ -208,9 +217,9 @@
     <li>Evals expire too</li>
   </ul>
   <aside class="notes">
-    <p>Use repetitions. One run is noise.</p>
-    <p>Cheaper and buggier is a regression.</p>
-    <p>An eval lasts one to three generations.</p>
+    <p>Run each case several times, because one run is noise.</p>
+    <p>Read cost beside score, because cheaper and buggier is still a regression.</p>
+    <p>An eval lasts only one to three model generations before it needs unlearning too.</p>
     <p>Cites:</p>
     <ul>
       <li>"Run it again": Anthropic, "Demystifying evals for AI agents" (variance across trials). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a> · Arize Phoenix, repetitions. <a href="https://arize.com/docs/phoenix/datasets-and-experiments/how-to-experiments/repetitions">arize.com</a></li>
@@ -223,9 +232,11 @@
   <h2>The unlearning experiment</h2>
   <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and ablation (new model, scaffolding removed). Comparing them leads to keep, unlearn or add." style="width: 100%;">
   <aside class="notes">
-    <p>Baseline, candidate, ablation.</p>
-    <p>An ablation is an eval where you delete things.</p>
-    <p>Three outcomes: keep, unlearn, add.</p>
+    <p>The same cases run through all three arms.</p>
+    <p>The baseline is the old model with your scaffolding.</p>
+    <p>The candidate is the new model with your scaffolding.</p>
+    <p>The ablation is the new model with the scaffolding removed, which is an eval where you delete things.</p>
+    <p>Comparing the arms tells you whether to keep the scaffolding, unlearn it or add something new.</p>
     <p>Cites:</p>
     <ul>
       <li>"Ablation": Cherny, B., Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact"). <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
@@ -244,10 +255,10 @@
     <li>3 docs tasks</li>
   </ul>
   <aside class="notes">
-    <p>A: the world I wrote it for.</p>
-    <p>C: what I chose by vibe.</p>
-    <p>Procedure, concept page, troubleshooting. Fictional platform.</p>
-    <p>Three judges plus an STE style judge. Cost tracked. Judge pinned. 3 repetitions.</p>
+    <p>Arm A, Opus 5 with STE, is the world I wrote the rule for.</p>
+    <p>Arm B, Opus 5.5 with STE, tests whether the rule still helps the new model.</p>
+    <p>Arm C, Opus 5.5 without STE, is what I chose by vibe.</p>
+    <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
     <p>Cites:</p>
     <ul>
       <li>"A", "B", "C", "3 docs tasks": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></li>
@@ -259,31 +270,66 @@
   <section>
     <h2>→ Phoenix</h2>
     <aside class="notes">
-      <p>1. Dataset. 2. Experiments, cost. 3. Compare B vs C. 4. One judge explanation. 5. Cost B vs C.</p>
-      <p>Backup screenshots: press down.</p>
+      <p>Show the dataset, the experiments with cost, B against C, one judge explanation, then the cost of B against C.</p>
+      <p>If the demo fails, press down for the backup screenshots.</p>
       <p>Cites: none (live demo).</p>
     </aside>
   </section>
   <section>
     <h3>Dataset</h3>
     <img src="screenshots/dataset.png" alt="Phoenix dataset unlearn-ste with three examples: a database password rotation how-to, an autoscaler cool-down concept page and an exceeded-quota troubleshooting entry." style="width: 100%;">
+    <aside class="notes">
+      <p>The dataset holds three cases: a password rotation how-to, an autoscaler concept page and a quota troubleshooting entry.</p>
+      <p>Cites:</p>
+      <ul>
+        <li>"Dataset": my own dataset in evals/ste. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      </ul>
+    </aside>
   </section>
   <section>
     <h3>Experiments, with cost</h3>
     <img src="screenshots/experiments.png" alt="Phoenix experiments for arms A, B and C, with charts for annotation scores, run latency and cost. B costs the most and is the slowest." style="width: 100%;">
+    <aside class="notes">
+      <p>Arm B, Opus 5.5 with STE, is the most expensive and the slowest of the three experiments.</p>
+      <p>Cites:</p>
+      <ul>
+        <li>"Experiments, with cost": my own runs of evals/ste, 26 Oct 2026. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      </ul>
+    </aside>
   </section>
   <section>
     <h3>Compare: B vs C</h3>
     <img src="screenshots/compare-b-c.png" alt="Phoenix compare view, B against C. Correctness, faithfulness and relevance are 1.00 for both. The outputs for the password rotation case are side by side." style="width: 100%;">
+    <aside class="notes">
+      <p>B and C both score 1.00 on correctness, faithfulness and relevance, so dropping STE costs no facts.</p>
+      <p>Cites:</p>
+      <ul>
+        <li>"Compare: B vs C": my own runs of evals/ste, 26 Oct 2026. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      </ul>
+    </aside>
   </section>
   <section>
     <h3>One judge explanation</h3>
     <p>C, password rotation, writing_style: fail</p>
     <blockquote>"Then restart the deployment again (step 4) and recheck (step 5)." It starts with an adverb and gives two actions in one instruction.</blockquote>
+    <aside class="notes">
+      <p>The STE style judge failed C's password rotation output because one step starts with an adverb and packs in two actions.</p>
+      <p>Cites:</p>
+      <ul>
+        <li>"writing_style: fail": the judge's explanation from my own runs of evals/ste, 26 Oct 2026. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      </ul>
+    </aside>
   </section>
   <section>
     <h3>Cost: B vs C</h3>
     <img src="screenshots/cost-b-c.png" alt="Average per run. B: 58.7 seconds, 6.6k tokens, $0.13. C: 24.9 seconds, 2.9k tokens, $0.05, which is 58% less." style="width: 100%;">
+    <aside class="notes">
+      <p>Without STE, C runs in less than half the time and tokens of B and costs 58% less.</p>
+      <p>Cites:</p>
+      <ul>
+        <li>"Cost: B vs C": my own runs of evals/ste, 26 Oct 2026, averages per run in Phoenix. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      </ul>
+    </aside>
   </section>
 </section>
 
@@ -297,10 +343,11 @@
     <li>Length: ~480 words, both</li>
   </ul>
   <aside class="notes">
-    <p>The line still changes Opus 5.5's style.</p>
-    <p>It adds nothing to the facts. It doubles the thinking.</p>
-    <p>It never fixed length: 3.5× the ground truth, with or without.</p>
-    <p>Rewrite for the real goal, then test that.</p>
+    <p>The verdict is neither keep nor unlearn: rewrite the rule for its real goal, then test that.</p>
+    <p>STE style passed 6 of 9 runs with the rule and 2 of 9 without, so the line still changes Opus 5.5's style.</p>
+    <p>Fact scores didn't change, so the rule adds nothing to accuracy.</p>
+    <p>Runs with STE cost 2.4 times as much, because the rule doubles the thinking.</p>
+    <p>Both arms averaged about 480 words, 3.5 times the ground truth, so the rule never fixed length.</p>
     <p>Cites:</p>
     <ul>
       <li>"6/9 vs 2/9", "Facts: no change", "2.4×", "~480 words": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per arm (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
@@ -318,8 +365,9 @@
     <li>Give it an expiry</li>
   </ul>
   <aside class="notes">
-    <p>I'm still writing them.</p>
-    <p>Record the incident each rule exists for.</p>
+    <p>I'm still writing workarounds, like a rule that "thoughts?" means discuss rather than start work.</p>
+    <p>I wrote it for Opus 5, so it needs the same test when the next model ships.</p>
+    <p>Give every rule an expiry condition and record the incident it exists for.</p>
     <p>Cites:</p>
     <ul>
       <li>"thoughts? = discuss", "Written for Opus 5": my dotfiles commit, 19 Sep 2026 (private repo; "because the default reading is to start work").</li>
@@ -337,8 +385,10 @@
     <li>Then: test it</li>
   </ul>
   <aside class="notes">
-    <p>A linter, not a measurement.</p>
-    <p>It cleared my CLAUDE.md three weeks after I added an Opus 5 rule.</p>
+    <p>The <code>/doctor prompt-audit</code> command checks your instruction files for lines written for older models.</p>
+    <p>It only shows what looks stale, so it's a linter, not a measurement.</p>
+    <p>It found nothing stale in my CLAUDE.md three weeks after I added an Opus 5 rule.</p>
+    <p>After the linter, test the remaining lines with an eval.</p>
     <p>Cites:</p>
     <ul>
       <li>"/doctor prompt-audit", "Shows what looks stale": "Memory" (audit your instruction files), Claude Code Docs ("instructions written for older models"). <a href="https://code.claude.com/docs/en/memory">code.claude.com</a></li>
@@ -355,8 +405,9 @@
     <li>With vs without</li>
   </ul>
   <aside class="notes">
-    <p>Pick the line you can't justify.</p>
-    <p>Take cases from real failures.</p>
+    <p>Pick the one line in your prompt you can't justify.</p>
+    <p>Build 20 cases from real failures.</p>
+    <p>Run an eval with the line and without it, and let the results decide.</p>
     <p>Cites:</p>
     <ul>
       <li>"20 real cases": Anthropic, "Demystifying evals for AI agents" ("20-50 simple tasks drawn from real failures is a great start"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
@@ -368,6 +419,15 @@
   <h2>Workarounds live in System 1</h2>
   <p>Evals are a System 2 you can rerun.</p>
   <p><a href="https://github.com/etoews/unlearn">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></p>
+  <aside class="notes">
+    <p>Workarounds live in System 1, where habit applies them without checking.</p>
+    <p>Evals are a System 2 you can rerun every time a new model ships.</p>
+    <p>The repo and the ai-evals skill have everything you need to run this yourself.</p>
+    <p>Cites:</p>
+    <ul>
+      <li>"System 1", "System 2": "Thinking, Fast and Slow", Wikipedia, revision 8 Sep 2026. <a href="https://en.wikipedia.org/w/index.php?title=Thinking,_Fast_and_Slow&amp;oldid=1373846268">wikipedia.org</a></li>
+    </ul>
+  </aside>
 </section>
 
 </div>
