@@ -38,8 +38,10 @@
   .reveal .logo-title { display: flex; align-items: center; gap: 30px; }
   .reveal .slides section .logo-title img { height: 200px; }
   .reveal .logo-title h2 { font-size: 2em; margin: 0; }
-  /* The verdict's options sit tight under the heading, apart from the evidence below. */
-  .reveal p.options { margin: -0.4em 0 1em; }
+  /* The verdict's decisions sit tight under the heading, apart from the evidence below. */
+  .reveal p.decisions { margin: -0.4em 0 1em; }
+  /* A fragment that explains the bullet it follows. */
+  .reveal .why { font-size: 0.8em; color: #c8c8c8; }
   /* Section separators: a larger heading on its own. */
   .reveal .separator h2 { font-size: 2em; }
 </style>
@@ -361,13 +363,13 @@
 
 <section>
   <h2>The unlearning experiment</h2>
-  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and deleted (new model, scaffolding removed). Comparing them leads to keep, upsert or unlearn." style="width: 100%;">
+  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three experiments: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and deleted (new model, scaffolding removed). Comparing them leads to keep, upsert or unlearn." style="width: 100%;">
   <aside class="notes">
-    <p>The same cases run through all three arms.</p>
+    <p>The same cases run through all three experiments.</p>
     <p>The baseline is the old model with your scaffolding.</p>
     <p>The candidate is the new model with your scaffolding.</p>
-    <p>The deleted arm is the new model with the scaffolding removed, which Boris Cherny calls an ablation: an eval where you delete things.</p>
-    <p>Comparing the arms tells you whether to keep the scaffolding, upsert it by rewriting it or adding something new, or unlearn it.</p>
+    <p>The deleted experiment is the new model with the scaffolding removed, which Boris Cherny calls an ablation: an eval where you delete things.</p>
+    <p>Comparing the experiments tells you whether to keep the scaffolding, upsert it by rewriting it or adding something new, or unlearn it.</p>
     <p>Citations:</p>
     <ul>
       <li>"Deleted": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
@@ -394,9 +396,9 @@
     <li>3 docs tasks</li>
   </ul>
   <aside class="notes">
-    <p>Arm A, Opus 5 with STE, is the world I wrote the rule for.</p>
-    <p>Arm B, Opus 5.5 with STE, tests whether the rule still helps the new model.</p>
-    <p>Arm C, Opus 5.5 without STE, is what I chose by vibe.</p>
+    <p>Experiment A, Opus 5 with STE, is the world I wrote the rule for.</p>
+    <p>Experiment B, Opus 5.5 with STE, tests whether the rule still helps the new model.</p>
+    <p>Experiment C, Opus 5.5 without STE, is what I chose by vibe.</p>
     <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
     <p>Citations:</p>
     <ul>
@@ -431,9 +433,9 @@
   </section>
   <section>
     <h3>Experiments, with cost</h3>
-    <img src="screenshots/experiments.png" alt="Phoenix experiments for arms A, B and C, with charts for annotation scores, run latency and cost. B costs the most and is the slowest." style="width: 100%;">
+    <img src="screenshots/experiments.png" alt="Phoenix experiments A, B and C, with charts for annotation scores, run latency and cost. B costs the most and is the slowest." style="width: 100%;">
     <aside class="notes">
-      <p>Arm B, Opus 5.5 with STE, is the most expensive and the slowest of the three experiments.</p>
+      <p>Experiment B, Opus 5.5 with STE, is the most expensive and the slowest of the three experiments.</p>
       <p>Citations:</p>
       <ul>
         <li>"Experiments, with cost": my own runs of evals/ste, 26 Oct 2026. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
@@ -478,22 +480,22 @@
 
 <section>
   <h2>Verdict</h2>
-  <p class="options">Keep · Upsert · <strong>Unlearn</strong></p>
+  <p class="decisions">Keep · Upsert · <strong>Unlearn</strong></p>
   <ul>
-    <li>STE style: 6/9 vs 2/9</li>
-    <li>Facts: no change</li>
-    <li>Cost: 2.4× with STE</li>
-    <li>Length: ~480 words, both</li>
+    <li class="fragment">STE style: 6/9 vs 2/9 <span class="fragment why">→ still shifts style</span></li>
+    <li class="fragment">Facts: no change <span class="fragment why">→ no accuracy gain</span></li>
+    <li class="fragment">Cost: 2.4× with STE <span class="fragment why">→ doubles the thinking</span></li>
+    <li class="fragment">Length: ~480 words, both <span class="fragment why">→ never fixed length</span></li>
   </ul>
   <aside class="notes">
     <p>The verdict is unlearn, and I deleted the STE line: it still shifts the style, but adds no accuracy, costs 2.4 times as much and never fixed length.</p>
     <p>STE style passed 6 of 9 runs with the rule and 2 of 9 without, so the line still changes Opus 5.5's style.</p>
     <p>Fact scores didn't change, so the rule adds nothing to accuracy.</p>
     <p>Runs with STE cost 2.4 times as much, because the rule doubles the thinking.</p>
-    <p>Both arms averaged about 480 words, 3.5 times the ground truth, so the rule never fixed length.</p>
+    <p>Both experiments averaged about 480 words, 3.5 times the ground truth, so the rule never fixed length.</p>
     <p>Citations:</p>
     <ul>
-      <li>"6/9 vs 2/9", "Facts: no change", "2.4×", "~480 words": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per arm (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      <li>"6/9 vs 2/9", "Facts: no change", "2.4×", "~480 words": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per experiment (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
     </ul>
   </aside>
 </section>
