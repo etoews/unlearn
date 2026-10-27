@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 900 360" width="900" height="360">
-  <title>The unlearning experiment: the same cases run through three arms (baseline: old model with scaffolding; candidate: new model with scaffolding; deleted: new model without scaffolding). Comparing them tells you to keep, unlearn or add.</title>
+  <title>The unlearning experiment: the same cases run through three arms (baseline: old model with scaffolding; candidate: new model with scaffolding; deleted: new model without scaffolding). Comparing them tells you to keep, upsert or unlearn.</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#ddd"/>
@@ -37,9 +37,9 @@
   <rect class="out" x="780" y="62" width="110" height="56" rx="28"/>
   <text class="outtext" x="835" y="98">Keep</text>
   <rect class="out" x="780" y="182" width="110" height="56" rx="28"/>
-  <text class="outtext" x="835" y="218">Unlearn</text>
+  <text class="outtext" x="835" y="218">Upsert</text>
   <rect class="out" x="780" y="302" width="110" height="56" rx="28"/>
-  <text class="outtext" x="835" y="338">Add</text>
+  <text class="outtext" x="835" y="338">Unlearn</text>
 
   <path class="flow" d="M160,210 C200,210 200,80 233,80"/>
   <line class="flow" x1="160" y1="210" x2="233" y2="210"/>

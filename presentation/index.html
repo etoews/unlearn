@@ -213,7 +213,7 @@
 <section>
   <h2>Why you can't see it</h2>
   <ul>
-    <li>Habit fires first</li>
+    <li>System 1 fires first</li>
     <li>3 prompts are WYSIATI</li>
     <li>Losses loom larger</li>
   </ul>
@@ -224,7 +224,7 @@
     <p>The rule you worked hardest to perfect is the hardest to drop.</p>
     <p>Citations:</p>
     <ul>
-      <li>"Habit fires first": "Thinking, Fast and Slow", Wikipedia ("associating new information with existing patterns"). <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
+      <li>"System 1 fires first": "Thinking, Fast and Slow", Wikipedia ("associating new information with existing patterns"). <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
       <li>"3 prompts are WYSIATI": same Wikipedia page (WYSIATI, "a small and necessarily un-representative set of observations"); 42% from Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("If your agent has a 75% per-trial success rate and you run 3 trials, the probability of passing all three is (0.75)³ ≈ 42%."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
       <li>"Losses loom larger": same Wikipedia page ("more likely to act to avert a loss than to achieve a gain").</li>
       <li>"Hardest to drop" (spoken): Sutton, R., "The Bitter Lesson", 13 Mar 2019 ("personally satisfying to the researcher"). <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">incompleteideas.net</a></li>
@@ -265,17 +265,17 @@
   <ul>
     <li>Weeks → days</li>
     <li>Anthropic: evals first</li>
-    <li>New model? Rerun the suite</li>
+    <li>Free baselines and regression tests</li>
   </ul>
   <aside class="notes">
     <p>Teams with evals upgrade to a new model in days, while teams without spend weeks testing.</p>
     <p>Anthropic ran its evals before it cut 80% of its system prompt.</p>
-    <p>When a new model ships, you rerun the same suite instead of retesting by hand, and that is where the weeks become days.</p>
+    <p>Once the evals exist, every run gives you a baseline to beat and a regression test, which is exactly what you need before deleting a rule.</p>
     <p>Citations:</p>
     <ul>
       <li>"Weeks → days": Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("When more powerful models come out, teams without evals face weeks of testing while competitors with evals can quickly determine the model’s strengths, tune their prompts, and upgrade in days."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
       <li>"Anthropic: evals first": Shihipar, 24 Jul 2026 ("with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
-      <li>"New model? Rerun the suite": same Anthropic post ("When a new model drops, running the suite quickly reveals which bets paid off."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+      <li>"Free baselines and regression tests": same Anthropic post ("Once evals exist, you get baselines and regression tests for free"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
     </ul>
   </aside>
 </section>
@@ -334,18 +334,20 @@
 </section>
 
 <section>
-  <h2>Read results honestly</h2>
+  <h2>Read results using System 2</h2>
   <ul>
     <li>Run it again</li>
     <li>Cost beside score</li>
     <li>Evals expire too</li>
   </ul>
   <aside class="notes">
+    <p>Read results with slow, effortful System 2 thinking, not a glance at the top score.</p>
     <p>Run each case several times, because one run is noise.</p>
     <p>Read cost beside score, because cheaper and buggier is still a regression.</p>
     <p>An eval lasts only one to three model generations before it needs unlearning too.</p>
     <p>Citations:</p>
     <ul>
+      <li>"System 2": "Thinking, Fast and Slow", Wikipedia ("Slow, effortful, infrequent, logical, calculating, conscious"). <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
       <li>"Run it again": Anthropic, "Demystifying evals for AI agents" ("pass^k measures the probability that all k trials succeed. As k increases, pass^k falls since demanding consistency across more trials is a harder bar to clear."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a> · Arize Phoenix, "Repetitions". <a href="https://arize.com/docs/phoenix/datasets-and-experiments/how-to-experiments/repetitions">arize.com</a></li>
       <li>"Evals expire too": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("An eval might live for maybe one, two, three model generations."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a> · Martin, L., "Automating eval design and hillclimbing with Claude", 28 Sep 2026 ("If you pick cases because today's model fails them, you are sampling the valleys of one model's capability surface"). <a href="https://claude.dev/blog/automating-eval-design-and-hillclimbing/">claude.dev</a></li>
     </ul>
@@ -354,13 +356,13 @@
 
 <section>
   <h2>The unlearning experiment</h2>
-  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and deleted (new model, scaffolding removed). Comparing them leads to keep, unlearn or add." style="width: 100%;">
+  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three arms: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and deleted (new model, scaffolding removed). Comparing them leads to keep, upsert or unlearn." style="width: 100%;">
   <aside class="notes">
     <p>The same cases run through all three arms.</p>
     <p>The baseline is the old model with your scaffolding.</p>
     <p>The candidate is the new model with your scaffolding.</p>
     <p>The deleted arm is the new model with the scaffolding removed, which Boris Cherny calls an ablation: an eval where you delete things.</p>
-    <p>Comparing the arms tells you whether to keep the scaffolding, unlearn it or add something new.</p>
+    <p>Comparing the arms tells you whether to keep the scaffolding, upsert it by rewriting it or adding something new, or unlearn it.</p>
     <p>Citations:</p>
     <ul>
       <li>"Deleted": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
