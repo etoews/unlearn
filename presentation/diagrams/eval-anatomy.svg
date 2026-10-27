@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 900 220" width="900" height="220">
-  <title>Anatomy of an eval: cases with ground truth go into a configuration, which produces outputs; judges score the outputs into results. A configuration run over all cases is one experiment.</title>
+  <title>Anatomy of an eval: a dataset of cases with ground truth goes into a configuration, which produces outputs; judges score the outputs into results. A configuration run over all cases is one experiment.</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#ddd"/>
@@ -45,6 +45,9 @@
   <line class="flow" x1="347" y1="125" x2="383" y2="125"/>
   <line class="flow" x1="535" y1="125" x2="570" y2="125"/>
   <line class="flow" x1="722" y1="125" x2="758" y2="125"/>
+
+  <path class="bracket" d="M10,210 v14 h150 v-14"/>
+  <text class="label" x="85" y="258">Dataset</text>
 
   <path class="bracket" d="M197,210 v14 h338 v-14"/>
   <text class="label" x="366" y="258">One experiment</text>

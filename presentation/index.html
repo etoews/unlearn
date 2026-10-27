@@ -159,7 +159,7 @@
 </section>
 
 <section>
-  <h2>Every generation changes</h2>
+  <h2>Models evolve</h2>
   <table class="compact">
     <thead>
       <tr><th>Version</th><th>From</th><th>To</th><th>Why</th></tr>
@@ -214,18 +214,18 @@
   <h2>Why you can't see it</h2>
   <ul>
     <li>Habit fires first</li>
-    <li>3 prompts feel like proof</li>
+    <li>3 prompts are WYSIATI</li>
     <li>Losses loom larger</li>
   </ul>
   <aside class="notes">
     <p>System 1 fires first and applies old patterns to a new model.</p>
-    <p>A three-prompt vibe check passes a prompt that fails one time in four 42% of the time.</p>
+    <p>What you see is all there is, so three good prompts feel like proof, yet they pass a prompt that fails one time in four 42% of the time.</p>
     <p>Deleting a rule risks a visible loss while keeping it only hides a gain, so we keep it.</p>
     <p>The rule you worked hardest to perfect is the hardest to drop.</p>
     <p>Citations:</p>
     <ul>
       <li>"Habit fires first": "Thinking, Fast and Slow", Wikipedia ("associating new information with existing patterns"). <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
-      <li>"3 prompts feel like proof": same Wikipedia page (WYSIATI, "a small and necessarily un-representative set of observations"); 42% from Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("If your agent has a 75% per-trial success rate and you run 3 trials, the probability of passing all three is (0.75)³ ≈ 42%."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+      <li>"3 prompts are WYSIATI": same Wikipedia page (WYSIATI, "a small and necessarily un-representative set of observations"); 42% from Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("If your agent has a 75% per-trial success rate and you run 3 trials, the probability of passing all three is (0.75)³ ≈ 42%."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
       <li>"Losses loom larger": same Wikipedia page ("more likely to act to avert a loss than to achieve a gain").</li>
       <li>"Hardest to drop" (spoken): Sutton, R., "The Bitter Lesson", 13 Mar 2019 ("personally satisfying to the researcher"). <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">incompleteideas.net</a></li>
     </ul>
@@ -243,30 +243,11 @@
 </section>
 
 <section>
-  <h2>Evals turn weeks into days</h2>
-  <ul>
-    <li>Weeks → days</li>
-    <li>Anthropic: evals first</li>
-    <li>You: vibes</li>
-  </ul>
-  <aside class="notes">
-    <p>Teams with evals upgrade to a new model in days, while teams without spend weeks testing.</p>
-    <p>Anthropic ran its evals before it cut 80% of its system prompt.</p>
-    <p>Users are told to test changes by observing behaviour, which is vibes.</p>
-    <p>Citations:</p>
-    <ul>
-      <li>"Weeks → days": Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("When more powerful models come out, teams without evals face weeks of testing while competitors with evals can quickly determine the model’s strengths, tune their prompts, and upgrade in days."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
-      <li>"Anthropic: evals first": Shihipar, 24 Jul 2026 ("with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
-      <li>"You: vibes": "Best practices for Claude Code", Claude Code Docs, as archived 10 Oct 2026 ("test changes by observing whether Claude’s behavior actually shifts"). <a href="https://web.archive.org/web/20261010202826/https://code.claude.com/docs/en/best-practices">web.archive.org</a>. The live page dropped that line by 27 Oct 2026; it now says "Older models sometimes needed the emphasis. Current ones follow a plainly worded line, and piling on emphasis mostly makes Claude over-apply the rule." <a href="https://code.claude.com/docs/en/best-practices">code.claude.com</a></li>
-    </ul>
-  </aside>
-</section>
-
-<section>
   <h2>Anatomy of an eval</h2>
-  <img src="diagrams/eval-anatomy.svg" alt="Cases with input and ground truth flow into a config (model, effort, system prompt), which produces one output per case. Judges, one per metric, score the outputs into results: scores, reasons and cost. Config plus outputs is one experiment." style="width: 100%;">
+  <img src="diagrams/eval-anatomy.svg" alt="A dataset of cases, each with input and ground truth, flows into a config (model, effort, system prompt), which produces one output per case. Judges, one per metric, score the outputs into results: scores, reasons and cost. Config plus outputs is one experiment." style="width: 100%;">
   <aside class="notes">
     <p>Each case pairs an input with a ground truth answer.</p>
+    <p>The dataset is the set of cases you rerun on every candidate.</p>
     <p>The config is the model, effort and system prompt under test.</p>
     <p>The config produces one output per case, and the config plus its outputs is one experiment.</p>
     <p>Judges score each output, with one judge per metric.</p>
@@ -274,7 +255,27 @@
     <p>Citations:</p>
     <ul>
       <li>"Cases… ground truth", "Judges": Husain, H. &amp; Shankar, S., "AI Evals: Everything You Need to Know", 18 Sep 2026. <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
-      <li>"Config", "One experiment", "scores · why · cost": the ai-evals skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com</a></li>
+      <li>"Dataset", "Config", "One experiment", "scores · why · cost": the ai-evals skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Evals turn weeks into days</h2>
+  <ul>
+    <li>Weeks → days</li>
+    <li>Anthropic: evals first</li>
+    <li>New model? Rerun the suite</li>
+  </ul>
+  <aside class="notes">
+    <p>Teams with evals upgrade to a new model in days, while teams without spend weeks testing.</p>
+    <p>Anthropic ran its evals before it cut 80% of its system prompt.</p>
+    <p>When a new model ships, you rerun the same suite instead of retesting by hand, and that is where the weeks become days.</p>
+    <p>Citations:</p>
+    <ul>
+      <li>"Weeks → days": Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("When more powerful models come out, teams without evals face weeks of testing while competitors with evals can quickly determine the model’s strengths, tune their prompts, and upgrade in days."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+      <li>"Anthropic: evals first": Shihipar, 24 Jul 2026 ("with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
+      <li>"New model? Rerun the suite": same Anthropic post ("When a new model drops, running the suite quickly reveals which bets paid off."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
     </ul>
   </aside>
 </section>
