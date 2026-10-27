@@ -24,6 +24,7 @@
   .reveal { --r-link-color: #86bc25; --r-link-color-hover: #a6d84a; }
   .reveal p.quote { font-size: 0.6em; margin: 12px 0; }
   .reveal p.quote cite { font-size: 0.8em; font-style: normal; color: #86bc25; }
+  .reveal p.subtitle { font-size: 0.7em; color: #c8c8c8; margin: 0 0 10px; }
   .reveal .intro { display: flex; align-items: center; gap: 60px; text-align: left; }
   .reveal .slides section .intro img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #86bc25; }
   .reveal .intro h2 { margin-bottom: 0.4em; }
@@ -112,21 +113,22 @@
 
 <section>
   <h2>My STE rule</h2>
-  <img src="diagrams/ste-timeline.svg" alt="Timeline: 29 Aug, STE rule added for Opus 5. 22 Sep, Opus 5.5 ships claiming better writing. 27 Sep, rule dropped with no reason given. 27 Sep afternoon, an older session still applied it, fixing 96 semicolons." style="width: 100%;">
-  <p>Was I right?</p>
+  <p class="subtitle">ASD-STE100 Simplified Technical English</p>
+  <img src="diagrams/ste-timeline.svg" alt="Timeline across the Opus 5 and Opus 5.5 eras: 24 Jul, Opus 5 ships. 29 Aug, STE rule added. 22 Sep, Opus 5.5 ships. 27 Sep, rule dropped." style="width: 100%;">
   <aside class="notes">
-    <p>On 29 August I added an STE rule to rein in Opus 5's verbosity.</p>
+    <p>STE is ASD-STE100 Simplified Technical English, a controlled language for aerospace maintenance writing.</p>
+    <p>On 24 July Opus 5 shipped, and it was far wordier than Opus 4.5.</p>
+    <p>On 29 August I added the STE rule to rein in that verbosity.</p>
     <p>On 22 September Opus 5.5 shipped, claiming better writing.</p>
-    <p>On 27 September I dropped the rule by vibe and recorded no reason.</p>
-    <p>That afternoon an older session still applied the rule and fixed 96 semicolons.</p>
-    <p>Leave "Was I right?" open until the verdict.</p>
+    <p>On 27 September I dropped the rule by vibe and recorded no reason, so was I right?</p>
     <p>Cites:</p>
     <ul>
+      <li>"ASD-STE100 Simplified Technical English": ASD-STE100 Simplified Technical English, Issue 9, ASD, 15 Jan 2025. <a href="https://www.asd-ste100.org/">asd-ste100.org</a> · "Simplified Technical English", Wikipedia (aerospace maintenance origin). <a href="https://en.wikipedia.org/wiki/Simplified_Technical_English">wikipedia.org</a></li>
+      <li>"24 Jul · Opus 5 ships": TechCrunch, "Anthropic launches Opus 5", 24 Jul 2026. <a href="https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/">techcrunch.com</a></li>
+      <li>"Far wordier" (spoken): Opus 5 averages 510 words per response vs 158 for Opus 4.5. paddo.dev, "A Dial Worth Turning", 2 Sep 2026. <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
       <li>"29 Aug · Added": my dotfiles commit, 29 Aug 2026 (private repo).</li>
-      <li>"for Opus 5": Opus 5 averages 510 words per response vs 158 for Opus 4.5. paddo.dev, "A Dial Worth Turning", 2 Sep 2026. <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
-      <li>"22 Sep · Opus 5.5 ships", "better writing": Anthropic, "Claude Opus 5.5", 22 Sep 2026 ("major improvements to the way Opus 5.5 writes and communicates"). <a href="https://www.anthropic.com/claude-opus-5-5">anthropic.com</a></li>
-      <li>"27 Sep · Dropped", "no reason given": my dotfiles commit, 27 Sep 2026 (private repo).</li>
-      <li>"Still applied", "96 semicolons fixed": a commit in another project, 27 Sep 2026.</li>
+      <li>"22 Sep · Opus 5.5 ships", "better writing" (spoken): Anthropic, "Claude Opus 5.5", 22 Sep 2026 ("major improvements to the way Opus 5.5 writes and communicates"). <a href="https://www.anthropic.com/claude-opus-5-5">anthropic.com</a></li>
+      <li>"27 Sep · Dropped", "no reason" (spoken): my dotfiles commit, 27 Sep 2026 (private repo).</li>
     </ul>
   </aside>
 </section>
@@ -136,16 +138,16 @@
   <ul>
     <li>Your fingers</li>
     <li>Your memory files</li>
-    <li>Your system prompt: −80%</li>
+    <li>Your system prompts</li>
   </ul>
   <aside class="notes">
     <p>Habits in your fingers outlive the rules that created them.</p>
     <p>Memory files keep old rules alive, like my em-dash ban that survives in copies.</p>
-    <p>Anthropic cut over 80% of Claude Code's system prompt, but only after its evals showed no loss.</p>
+    <p>System prompts carry old scaffolding too: Anthropic cut over 80% of Claude Code's, but only after its evals showed no loss.</p>
     <p>Cites:</p>
     <ul>
       <li>"Your memory files": my own memory and prompt files still hold an em-dash ban removed from CLAUDE.md in Aug 2026.</li>
-      <li>"−80%": Shihipar, T., "The new rules of context engineering for Claude 5 generation models", Anthropic, 24 Jul 2026 ("removed over 80% of Claude Code's system prompt… with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
+      <li>"Your system prompts", "over 80%" (spoken): Shihipar, T., "The new rules of context engineering for Claude 5 generation models", Anthropic, 24 Jul 2026 ("removed over 80% of Claude Code's system prompt… with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
     </ul>
   </aside>
 </section>
