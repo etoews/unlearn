@@ -131,28 +131,6 @@
 </section>
 
 <section>
-  <h2>My STE rule</h2>
-  <p class="subtitle">Always use ASD-STE100 Simplified Technical English (STE) for README.md, ARCHITECTURE.md, etc type of documentation.</p>
-  <img src="diagrams/ste-timeline.svg" alt="Timeline across the Opus 5 and Opus 5.5 eras: 24 Jul, Opus 5 ships. 29 Aug, STE rule added. 22 Sep, Opus 5.5 ships. 27 Sep, rule dropped." style="width: 100%;">
-  <aside class="notes">
-    <p>The rule told Claude to write docs in ASD-STE100 Simplified Technical English, a controlled language for aerospace maintenance writing.</p>
-    <p>On 24 July Opus 5 shipped, and it was far wordier than Opus 4.5.</p>
-    <p>On 29 August I added the STE rule to rein in that verbosity.</p>
-    <p>On 22 September Opus 5.5 shipped, claiming better writing.</p>
-    <p>On 27 September I dropped the rule by vibe and recorded no reason, so was I right?</p>
-    <p>Citations:</p>
-    <ul>
-      <li>"ASD-STE100 Simplified Technical English": ASD-STE100 Simplified Technical English, Issue 9, ASD, 15 Jan 2025. <a href="https://www.asd-ste100.org/">asd-ste100.org</a> · "Simplified Technical English", Wikipedia ("wanted a standardized form of English for aircraft maintenance documentation"). <a href="https://en.wikipedia.org/wiki/Simplified_Technical_English">wikipedia.org</a></li>
-      <li>"24 Jul · Opus 5 ships": Brandom, R., "Anthropic launches Opus 5", TechCrunch, 24 Jul 2026. <a href="https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/">techcrunch.com</a></li>
-      <li>"Far wordier" (spoken): paddo.dev, "A Dial Worth Turning", 2 Sep 2026 ("510 words per response for Opus 5, against 158 for Opus 4.5"). <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
-      <li>"29 Aug · Added", "Always use ASD-STE100 Simplified Technical English (STE)": my own CLAUDE.md commit, 29 Aug 2026.</li>
-      <li>"22 Sep · Opus 5.5 ships", "better writing" (spoken): Anthropic, "Claude Opus 5.5", 22 Sep 2026 ("major improvements to the way Opus 5.5 writes and communicates"). <a href="https://www.anthropic.com/claude-opus-5-5">anthropic.com</a></li>
-      <li>"27 Sep · Dropped", "no reason" (spoken): my own CLAUDE.md commit, 27 Sep 2026.</li>
-    </ul>
-  </aside>
-</section>
-
-<section>
   <h2>Where scaffolding lives</h2>
   <ul>
     <li>Your fingers</li>
@@ -394,8 +372,29 @@
 </section>
 
 <section>
-  <h2>Should STE stay?</h2>
+  <h2>My STE rule</h2>
   <p class="subtitle">Always use ASD-STE100 Simplified Technical English (STE) for README.md, ARCHITECTURE.md, etc type of documentation.</p>
+  <img src="diagrams/ste-timeline.svg" alt="Timeline across the Opus 5 and Opus 5.5 eras: 24 Jul, Opus 5 ships. 29 Aug, STE rule added. 22 Sep, Opus 5.5 ships. 27 Sep, rule dropped." style="width: 100%;">
+  <aside class="notes">
+    <p>The rule told Claude to write docs in ASD-STE100 Simplified Technical English, a controlled language for aerospace maintenance writing.</p>
+    <p>On 24 July Opus 5 shipped, and it was far wordier than Opus 4.5.</p>
+    <p>On 29 August I added the STE rule to rein in that verbosity.</p>
+    <p>On 22 September Opus 5.5 shipped, claiming better writing.</p>
+    <p>On 27 September I dropped the rule by vibe and recorded no reason, so was I right?</p>
+    <p>Citations:</p>
+    <ul>
+      <li>"ASD-STE100 Simplified Technical English": ASD-STE100 Simplified Technical English, Issue 9, ASD, 15 Jan 2025. <a href="https://www.asd-ste100.org/">asd-ste100.org</a> · "Simplified Technical English", Wikipedia ("wanted a standardized form of English for aircraft maintenance documentation"). <a href="https://en.wikipedia.org/wiki/Simplified_Technical_English">wikipedia.org</a></li>
+      <li>"24 Jul · Opus 5 ships": Brandom, R., "Anthropic launches Opus 5", TechCrunch, 24 Jul 2026. <a href="https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/">techcrunch.com</a></li>
+      <li>"Far wordier" (spoken): paddo.dev, "A Dial Worth Turning", 2 Sep 2026 ("510 words per response for Opus 5, against 158 for Opus 4.5"). <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
+      <li>"29 Aug · Added", "Always use ASD-STE100 Simplified Technical English (STE)": my own CLAUDE.md commit, 29 Aug 2026.</li>
+      <li>"22 Sep · Opus 5.5 ships", "better writing" (spoken): Anthropic, "Claude Opus 5.5", 22 Sep 2026 ("major improvements to the way Opus 5.5 writes and communicates"). <a href="https://www.anthropic.com/claude-opus-5-5">anthropic.com</a></li>
+      <li>"27 Sep · Dropped", "no reason" (spoken): my own CLAUDE.md commit, 27 Sep 2026.</li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Should STE stay?</h2>
   <ul>
     <li>Experiment A: Opus 5 + STE</li>
     <li>Experiment B: Opus 5.5 + STE</li>
@@ -403,14 +402,12 @@
     <li>Dataset 3: docs tasks</li>
   </ul>
   <aside class="notes">
-    <p>The rule on screen is the exact line from my CLAUDE.md that each experiment keeps or drops.</p>
     <p>Experiment A, Opus 5 with STE, is the world I wrote the rule for.</p>
     <p>Experiment B, Opus 5.5 with STE, tests whether the rule still helps the new model.</p>
     <p>Experiment C, Opus 5.5 without STE, is what I chose by vibe.</p>
     <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
     <p>Citations:</p>
     <ul>
-      <li>"Always use ASD-STE100 Simplified Technical English (STE)": my own CLAUDE.md commit, 29 Aug 2026.</li>
       <li>"Experiment A", "Experiment B", "Experiment C", "Dataset 3": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></li>
     </ul>
   </aside>
