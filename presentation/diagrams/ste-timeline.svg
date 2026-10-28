@@ -5,6 +5,7 @@
     .date { font-size: 26px; font-weight: 700; }
     .event { font-size: 24px; }
     .era { font-size: 20px; }
+    .emoji { font-size: 44px; }
     .axis { stroke: #ddd; stroke-width: 3; }
     /* Each dot shares the colour of its model's bar. */
     .opus5 { fill: #6b6b6b; }
@@ -20,6 +21,8 @@
   <circle class="opus5" cx="340" cy="150" r="12"/>
   <text class="date" x="340" y="112">29 Aug</text>
   <text class="event" x="340" y="196">Added</text>
+
+  <text class="emoji" x="230" y="150" dy="0.35em">🤪</text>
 
   <circle class="opus55" cx="560" cy="150" r="12"/>
   <text class="date" x="560" y="112">22 Sep</text>

@@ -10,17 +10,19 @@
 <link rel="stylesheet" href="vendor/reveal.js/theme/black.css">
 <link rel="stylesheet" href="vendor/reveal.js/plugin/highlight/monokai.css">
 <style>
-  /* contain, not cover: the logo and "Engineering" sit near the image edges, and the image's black edges hide any letterbox. */
-  .reveal-viewport { background: #000 url("backgrounds/eng-background-3.jpg") center / contain no-repeat; }
+  /* Stretched to fill, not cover: the logo and "Engineering" sit near the image edges and cover would clip them. */
+  .reveal-viewport { background: #000 url("backgrounds/eng-background-3.jpg") center / 100% 100% no-repeat; }
   /* Every slide is the same dark panel, sized to sit between the logo (top) and "Engineering" (bottom) so text stays readable over the streaks. reveal.js centres it vertically. */
   .reveal .slides section:not(.stack) {
-    box-sizing: border-box; width: 1100px; height: 450px; left: 90px; padding: 20px 50px;
+    box-sizing: border-box; width: 1160px; height: 500px; left: 60px; padding: 20px 50px;
     background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(134, 188, 37, 0.4); border-radius: 16px;
   }
   /* reveal.js sets display inline from its display option, so centre the content with flex. */
   .reveal .slides section:not(.stack) { flex-direction: column; justify-content: center; align-items: center; }
   /* Images fill whatever height the panel has left. */
   .reveal .slides section img { flex: 0 1 auto; min-height: 0; max-height: none; margin: 10px 0; object-fit: contain; }
+  /* Fills the panel height, leaving just the panel's 20px padding above and below. */
+  .reveal .slides section img.full { height: 100%; margin: 0; }
   .reveal { --r-link-color: #86bc25; --r-link-color-hover: #a6d84a; }
   .reveal p.quote { font-size: 0.6em; margin: 12px 0; }
   .reveal p.quote cite { font-size: 0.8em; font-style: normal; color: #86bc25; }
@@ -86,7 +88,7 @@
 <section>
   <h2>Agenda</h2>
   <ul>
-    <li>Unlearning in the AI era</li>
+    <li>Unlearn</li>
     <li>Evals</li>
     <li>Walk-through</li>
     <li>Start unlearning</li>
@@ -100,10 +102,10 @@
   </aside>
 </section>
 
-<!-- 1. Unlearning in the AI era (1:00–9:00) -->
+<!-- 1. Unlearn (1:00–9:00) -->
 
 <section class="separator">
-  <h2>Unlearning in the AI era</h2>
+  <h2>Unlearn</h2>
   <aside class="notes">
     <p>This section shows why the workarounds we wrote for older models are so hard to let go.</p>
     <p>Citations: none.</p>
@@ -131,20 +133,24 @@
 </section>
 
 <section>
-  <h2>Where scaffolding lives</h2>
-  <ul>
-    <li>Your fingers</li>
-    <li>Your memory files</li>
-    <li>Your system prompts</li>
-  </ul>
+  <div class="book">
+    <img src="images/thinking-fast-and-slow.jpg" alt="Cover of Thinking, Fast and Slow by Daniel Kahneman.">
+    <div>
+      <ul>
+        <li><strong>System 1</strong><br>fast, automatic, unconscious, emotional</li>
+        <li><strong>System 2</strong><br>slow, effortful, conscious, logical</li>
+      </ul>
+    </div>
+  </div>
   <aside class="notes">
-    <p>Habits in your fingers outlive the rules that created them.</p>
-    <p>Memory files keep old rules alive, like my em-dash ban that survives in copies.</p>
-    <p>System prompts carry old scaffolding too: Anthropic cut over 80% of Claude Code's, but only after its evals showed no loss.</p>
+    <p>Daniel Kahneman's 2011 book splits thinking into two systems.</p>
+    <p>System 1 runs fast and automatically below awareness, driven by feeling, and it is where practised habits live.</p>
+    <p>System 2 is slow, effortful, conscious and logical, and it is the one that actually checks.</p>
     <p>Citations:</p>
     <ul>
-      <li>"Your memory files": my own memory and prompt files still hold an em-dash ban removed from CLAUDE.md in Aug 2026.</li>
-      <li>"Your system prompts", "over 80%" (spoken): Shihipar, T., "The new rules of context engineering for Claude 5 generation models", Anthropic, 24 Jul 2026 ("We removed over 80% of Claude Code’s system prompt for models like Claude Opus 5 and Claude Fable 5 with no measurable loss on our coding evaluations."). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
+      <li>Book cover: "Thinking, Fast and Slow", Wikipedia ("Thinking, Fast and Slow is a 2011 popular science book by the Israeli-American psychologist Daniel Kahneman."). <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
+      <li>"System 1: fast, automatic, unconscious, emotional": same Wikipedia page ("Fast, automatic, frequent, emotional, stereotypic, unconscious").</li>
+      <li>"System 2: slow, effortful, conscious, logical": same Wikipedia page ("Slow, effortful, infrequent, logical, calculating, conscious").</li>
     </ul>
   </aside>
 </section>
@@ -179,24 +185,20 @@
 </section>
 
 <section>
-  <div class="book">
-    <img src="images/thinking-fast-and-slow.jpg" alt="Cover of Thinking, Fast and Slow by Daniel Kahneman.">
-    <div>
-      <ul>
-        <li><strong>System 1</strong><br>fast, automatic, unconscious, emotional</li>
-        <li><strong>System 2</strong><br>slow, effortful, conscious, logical</li>
-      </ul>
-    </div>
-  </div>
+  <h2>Where scaffolding lives</h2>
+  <ul>
+    <li>Your fingers</li>
+    <li>Your memory files</li>
+    <li>Your system prompts</li>
+  </ul>
   <aside class="notes">
-    <p>Daniel Kahneman's 2011 book splits thinking into two systems.</p>
-    <p>System 1 runs fast and automatically below awareness, driven by feeling, and it is where practised habits live.</p>
-    <p>System 2 is slow, effortful, conscious and logical, and it is the one that actually checks.</p>
+    <p>Habits in your fingers outlive the rules that created them.</p>
+    <p>Memory files keep old rules alive, like my em-dash ban that survives in copies.</p>
+    <p>System prompts carry old scaffolding too: Anthropic cut over 80% of Claude Code's, but only after its evals showed no loss.</p>
     <p>Citations:</p>
     <ul>
-      <li>Book cover: "Thinking, Fast and Slow", Wikipedia ("Thinking, Fast and Slow is a 2011 popular science book by the Israeli-American psychologist Daniel Kahneman."). <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
-      <li>"System 1: fast, automatic, unconscious, emotional": same Wikipedia page ("Fast, automatic, frequent, emotional, stereotypic, unconscious").</li>
-      <li>"System 2: slow, effortful, conscious, logical": same Wikipedia page ("Slow, effortful, infrequent, logical, calculating, conscious").</li>
+      <li>"Your memory files": my own memory and prompt files still hold an em-dash ban removed from CLAUDE.md in Aug 2026.</li>
+      <li>"Your system prompts", "over 80%" (spoken): Shihipar, T., "The new rules of context engineering for Claude 5 generation models", Anthropic, 24 Jul 2026 ("We removed over 80% of Claude Code’s system prompt for models like Claude Opus 5 and Claude Fable 5 with no measurable loss on our coding evaluations."). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
     </ul>
   </aside>
 </section>
@@ -234,24 +236,6 @@
 </section>
 
 <section>
-  <h2>Anatomy of an eval</h2>
-  <img src="diagrams/eval-anatomy.svg" alt="A dataset of cases, each with input and ground truth, flows into a config (model, effort, system prompt), which produces one output per case. Judges, one per metric, score the outputs into results: scores, reasons and cost. Config plus outputs is one experiment." style="width: 100%;">
-  <aside class="notes">
-    <p>Each case pairs an input with a ground truth answer.</p>
-    <p>The dataset is the set of cases you rerun on every candidate.</p>
-    <p>The config is the model, effort and system prompt under test.</p>
-    <p>The config produces one output per case, and the config plus its outputs is one experiment.</p>
-    <p>Judges score each output, with one judge per metric.</p>
-    <p>Results hold each score, the judge's reason and the cost, using the STE rule as the running example.</p>
-    <p>Citations:</p>
-    <ul>
-      <li>"Cases… ground truth", "Judges": Husain, H. &amp; Shankar, S., "AI Evals: Everything You Need to Know", 18 Sep 2026. <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
-      <li>"Dataset", "Config", "One experiment", "scores · why · cost": the ai-evals skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com</a></li>
-    </ul>
-  </aside>
-</section>
-
-<section>
   <h2>Evals turn weeks into days</h2>
   <ul>
     <li>Weeks → days</li>
@@ -267,6 +251,24 @@
       <li>"Weeks → days": Anthropic, "Demystifying evals for AI agents", 9 Jan 2026 ("When more powerful models come out, teams without evals face weeks of testing while competitors with evals can quickly determine the model’s strengths, tune their prompts, and upgrade in days."). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
       <li>"Anthropic: evals first": Shihipar, 24 Jul 2026 ("with no measurable loss on our coding evaluations"). <a href="https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/">claude.dev</a></li>
       <li>"Free baselines and regression tests": same Anthropic post ("Once evals exist, you get baselines and regression tests for free"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Anatomy of an eval</h2>
+  <img src="diagrams/eval-anatomy.svg" alt="A dataset of cases, each with input and ground truth, flows into a config (model, effort, system prompt), which produces one output per case. Judges, one per metric, score the outputs into results: scores, reasons and cost. Config plus outputs is one experiment." style="width: 100%;">
+  <aside class="notes">
+    <p>Each case pairs an input with a ground truth answer.</p>
+    <p>The dataset is the set of cases you rerun on every candidate.</p>
+    <p>The config is the model, effort and system prompt under test.</p>
+    <p>The config produces one output per case, and the config plus its outputs is one experiment.</p>
+    <p>Judges score each output, with one judge per metric.</p>
+    <p>Results hold each score, the judge's reason and the cost, using the STE rule as the running example.</p>
+    <p>Citations:</p>
+    <ul>
+      <li>"Cases… ground truth", "Judges": Husain, H. &amp; Shankar, S., "AI Evals: Everything You Need to Know", 18 Sep 2026. <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
+      <li>"Dataset", "Config", "One experiment", "scores · why · cost": the ai-evals skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com</a></li>
     </ul>
   </aside>
 </section>
@@ -346,18 +348,13 @@
 </section>
 
 <section>
-  <h2>The unlearning experiment</h2>
-  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three experiments: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and deleted (new model, scaffolding removed). Comparing them leads to keep, upsert or unlearn." style="width: 100%;">
+  <img class="full" src="diagrams/FoSWE.drawio.png" alt="The Future of Software Engineering: roles from BA to Ops, with Gen AI between each stage from domain and requirements through plan, spec and design, then verify and eval, to deploy, debug and operate. A context and harness loop wraps the build stage, with build-time evals under it and run-time evals under the whole flow.">
   <aside class="notes">
-    <p>The same cases run through all three experiments.</p>
-    <p>The baseline is the old model with your scaffolding.</p>
-    <p>The candidate is the new model with your scaffolding.</p>
-    <p>The deleted experiment is the new model with the scaffolding removed, which Boris Cherny calls an ablation: an eval where you delete things.</p>
-    <p>Comparing the experiments tells you whether to keep the scaffolding, upsert it by rewriting it or adding something new, or unlearn it.</p>
-    <p>Citations:</p>
-    <ul>
-      <li>"Deleted": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
-    </ul>
+    <p>The future of software engineering is a chain of stages from domain and requirements through to operate, and the roles from BA to Ops sit above it.</p>
+    <p>Gen AI sits between each pair of stages, and the context and harness wrap the build stage.</p>
+    <p>The dashed outer loop and the circular arrows show the work repeating rather than running once.</p>
+    <p>Build-time evals cover the middle of the flow, and run-time evals cover the whole of it.</p>
+    <p>Citations: none, this is my own diagram.</p>
   </aside>
 </section>
 
@@ -394,21 +391,38 @@
 </section>
 
 <section>
+  <h2>The unlearning experiment</h2>
+  <img src="diagrams/unlearning-experiment.svg" alt="The same cases run through three experiments: baseline (old model plus scaffolding), candidate (new model plus scaffolding) and delete (new model, scaffolding removed). Comparing them leads to keep, update or unlearn." style="width: 100%;">
+  <aside class="notes">
+    <p>The same cases run through all three experiments.</p>
+    <p>The baseline is the old model with your scaffolding.</p>
+    <p>The candidate is the new model with your scaffolding.</p>
+    <p>The delete experiment is the new model with the scaffolding removed, which Boris Cherny calls an ablation: an eval where you delete things.</p>
+    <p>The cases are the dataset, the three boxes are the experiments, the judges and results sit in the compare step, and the outcome is the action you take.</p>
+    <p>Comparing the experiments tells you whether to keep the scaffolding, update it by rewriting it or adding something new, or unlearn it.</p>
+    <p>Citations:</p>
+    <ul>
+      <li>"Delete": Cherny, B., "Boris Cherny: Building Claude Code", Root Access transcript of Y Combinator Startup School, 27 Jul 2026 ("The ablation is essentially an eval, but you delete things to figure out the impact."). <a href="https://www.ycrootaccess.com/p/boris-cherny-building-claude-code">transcript</a> · <a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">YouTube</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
   <h2>Should STE stay?</h2>
   <ul>
+    <li>Dataset: 3 docs tasks</li>
     <li>Experiment A: Opus 5 + STE</li>
     <li>Experiment B: Opus 5.5 + STE</li>
     <li>Experiment C: Opus 5.5, no STE</li>
-    <li>Dataset 3: docs tasks</li>
   </ul>
   <aside class="notes">
+    <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
     <p>Experiment A, Opus 5 with STE, is the world I wrote the rule for.</p>
     <p>Experiment B, Opus 5.5 with STE, tests whether the rule still helps the new model.</p>
     <p>Experiment C, Opus 5.5 without STE, is what I chose by vibe.</p>
-    <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
     <p>Citations:</p>
     <ul>
-      <li>"Experiment A", "Experiment B", "Experiment C", "Dataset 3": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></li>
+      <li>"Dataset: 3 docs tasks", "Experiment A", "Experiment B", "Experiment C": my own dataset and experiments, run with the ai-evals skill. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></li>
     </ul>
   </aside>
 </section>
@@ -486,7 +500,7 @@
 
 <section>
   <h2>Verdict</h2>
-  <p class="decisions">Keep · Upsert · <strong>Unlearn</strong></p>
+  <p class="decisions">Keep · Update · <strong>Unlearn</strong></p>
   <div class="evidence">
     <span class="num fragment" data-fragment-index="0">2/9</span><span class="fragment" data-fragment-index="1">writing_ste passes on Opus 5.5, no STE</span>
     <span class="num fragment" data-fragment-index="0">0</span><span class="fragment" data-fragment-index="2">change in facts</span>
@@ -600,7 +614,8 @@
     width: 1280,
     height: 720,
     display: 'flex',
-    slideNumber: 'c/t',
+    controls: false,
+    slideNumber: false,
     plugins: [RevealNotes, RevealHighlight, RevealZoom, RevealSearch]
   });
 </script>
