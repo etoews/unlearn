@@ -46,6 +46,10 @@
   .reveal .evidence .num { text-align: right; font-weight: 700; color: #86bc25; }
   /* Section separators: a larger heading on its own. */
   .reveal .separator h2 { font-size: 2em; }
+  .reveal .qr-codes { display: flex; justify-content: center; gap: 60px; }
+  .reveal .qr-codes figure { margin: 0; }
+  .reveal .slides section .qr-codes img { width: 240px; height: 240px; margin: 0; }
+  .reveal .qr-codes figcaption { font-size: 0.6em; margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -556,16 +560,32 @@
 </section>
 
 <section>
-  <h2>Workarounds live in System 1</h2>
-  <p>Evals are a System 2 you can rerun.</p>
-  <p><a href="https://github.com/etoews/unlearn">github.com/etoews/unlearn</a> · <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">ai-evals skill</a></p>
+  <h2>Evals are System 2 thinking you can rerun</h2>
   <aside class="notes">
-    <p>Workarounds live in System 1, where habit applies them without checking.</p>
-    <p>Evals are a System 2 you can rerun every time a new model ships.</p>
-    <p>The repo and the ai-evals skill have everything you need to run this yourself.</p>
+    <p>Workarounds live in System 1, where habit applies them without checking, and evals are System 2 thinking you can rerun every time a new model ships.</p>
     <p>Citations:</p>
     <ul>
-      <li>"System 1", "System 2": "Thinking, Fast and Slow", Wikipedia. <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
+      <li>"System 2 thinking": "Thinking, Fast and Slow", Wikipedia. <a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">wikipedia.org</a></li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h2>Thank you</h2>
+  <div class="qr-codes">
+    <figure><img src="images/qr-unlearn.svg" alt="QR code for github.com/etoews/unlearn"><figcaption>This talk</figcaption></figure>
+    <figure><img src="images/qr-ai-evals.svg" alt="QR code for the ai-evals skill on GitHub"><figcaption>ai-evals skill</figcaption></figure>
+    <figure><img src="images/qr-linkedin.svg" alt="QR code for linkedin.com/in/etoews"><figcaption>LinkedIn</figcaption></figure>
+  </div>
+  <aside class="notes">
+    <p>The first QR code is this talk's repo, with the slides and the STE eval.</p>
+    <p>The second is the ai-evals skill, which has everything you need to run this yourself.</p>
+    <p>The third is my LinkedIn, if you want to keep talking.</p>
+    <p>Citations:</p>
+    <ul>
+      <li>"This talk": <a href="https://github.com/etoews/unlearn">github.com/etoews/unlearn</a></li>
+      <li>"ai-evals skill": <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com/etoews/skills</a></li>
+      <li>"LinkedIn": <a href="https://www.linkedin.com/in/etoews/">linkedin.com/in/etoews</a></li>
     </ul>
   </aside>
 </section>
