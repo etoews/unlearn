@@ -34,6 +34,9 @@
   /* Tables with many columns: smaller text, one line per cell. */
   .reveal table.compact { font-size: 0.8em; }
   .reveal table.compact th, .reveal table.compact td { white-space: nowrap; }
+  /* Collapsed cell borders ignore a fragment row's opacity, so hide them until the row appears. */
+  .reveal table tr.fragment td { transition: border-color 0.2s; }
+  .reveal table tr.fragment:not(.visible) td { border-color: transparent; }
   .reveal .book { display: flex; align-items: center; gap: 40px; text-align: left; }
   .reveal .book ul { font-size: 0.9em; }
   .reveal .slides section .book img { height: 380px; }
@@ -143,8 +146,8 @@
     <img src="images/thinking-fast-and-slow.jpg" alt="Cover of Thinking, Fast and Slow by Daniel Kahneman.">
     <div>
       <ul>
-        <li><strong>System 1</strong><br>fast, automatic, unconscious, emotional</li>
-        <li><strong>System 2</strong><br>slow, effortful, conscious, logical</li>
+        <li class="fragment"><strong>System 1</strong><br>fast, automatic, unconscious, emotional</li>
+        <li class="fragment"><strong>System 2</strong><br>slow, effortful, conscious, logical</li>
       </ul>
     </div>
   </div>
@@ -168,10 +171,10 @@
       <tr><th>Version</th><th>From</th><th>To</th><th>Why</th></tr>
     </thead>
     <tbody>
-      <tr><td>Opus 4.5</td><td>CRITICAL: MUST use</td><td>Use when</td><td>Overtriggers</td></tr>
-      <tr><td>Opus 5</td><td>Verify your work</td><td>Delete</td><td>Self-verifies</td></tr>
-      <tr><td>Opus 5.5</td><td>Think carefully</td><td>Delete</td><td>Slower replies</td></tr>
-      <tr><td>Fable 5.1</td><td>No bullets</td><td>Say when to format</td><td>Under-formats</td></tr>
+      <tr class="fragment"><td>Opus 4.5</td><td>CRITICAL: MUST use</td><td>Use when</td><td>Overtriggers</td></tr>
+      <tr class="fragment"><td>Opus 5</td><td>Verify your work</td><td>Delete</td><td>Self-verifies</td></tr>
+      <tr class="fragment"><td>Opus 5.5</td><td>Think carefully</td><td>Delete</td><td>Slower replies</td></tr>
+      <tr class="fragment"><td>Fable 5.1</td><td>No bullets</td><td>Say when to format</td><td>Under-formats</td></tr>
     </tbody>
   </table>
   <aside class="notes">
@@ -193,9 +196,9 @@
 <section>
   <h2>Where scaffolding lives</h2>
   <ul>
-    <li>Your fingers</li>
-    <li>Your memory files</li>
-    <li>Your system prompts</li>
+    <li class="fragment">Your fingers</li>
+    <li class="fragment">Your memory files</li>
+    <li class="fragment">Your system prompts</li>
   </ul>
   <aside class="notes">
     <p>Habits in your fingers outlive the rules that created them.</p>
@@ -212,9 +215,9 @@
 <section>
   <h2>Why you can't see it</h2>
   <ul>
-    <li>System 1 fires first</li>
-    <li>3 prompts are WYSIATI</li>
-    <li>Losses loom larger</li>
+    <li class="fragment">System 1 fires first</li>
+    <li class="fragment">3 prompts are WYSIATI</li>
+    <li class="fragment">Losses loom larger</li>
   </ul>
   <aside class="notes">
     <p>System 1 fires first and applies old patterns to a new model.</p>
@@ -244,9 +247,9 @@
 <section>
   <h2>Evals turn weeks into days</h2>
   <ul>
-    <li>Weeks → days</li>
-    <li>Anthropic: evals first</li>
-    <li>Free baselines and regression tests</li>
+    <li class="fragment">Weeks → days</li>
+    <li class="fragment">Anthropic: evals first</li>
+    <li class="fragment">Free baselines and regression tests</li>
   </ul>
   <aside class="notes">
     <p>Teams with evals upgrade to a new model in days, while teams without spend weeks testing.</p>
@@ -282,9 +285,9 @@
 <section>
   <h2>Judges have biases</h2>
   <ul>
-    <li>Give it the answer</li>
-    <li>Long ≠ good</li>
-    <li>Pin it. Binary. Read why.</li>
+    <li class="fragment">Give it the answer</li>
+    <li class="fragment">Long ≠ good</li>
+    <li class="fragment">Pin it. Binary. Read why.</li>
   </ul>
   <aside class="notes">
     <p>Giving the judge a reference answer cut false passes on wrong maths answers from 14 in 20 to 3 in 20.</p>
@@ -306,11 +309,11 @@
       <tr><th>Metric</th><th>Definition</th></tr>
     </thead>
     <tbody>
-      <tr><td>Correctness</td><td>Matches the ground truth's facts</td></tr>
-      <tr><td>Faithfulness</td><td>Invents nothing beyond the ground truth</td></tr>
-      <tr><td>Relevance</td><td>Addresses the question</td></tr>
-      <tr><td>Writing style</td><td>Custom metric (e.g. STE)</td></tr>
-      <tr><td>...</td><td>There are many more</td></tr>
+      <tr class="fragment"><td>Correctness</td><td>Matches the ground truth's facts</td></tr>
+      <tr class="fragment"><td>Faithfulness</td><td>Invents nothing beyond the ground truth</td></tr>
+      <tr class="fragment"><td>Relevance</td><td>Addresses the question</td></tr>
+      <tr class="fragment"><td>Writing style</td><td>Custom metric (e.g. STE)</td></tr>
+      <tr class="fragment"><td>...</td><td>There are many more</td></tr>
     </tbody>
   </table>
   <aside class="notes">
@@ -335,9 +338,9 @@
 <section>
   <h2>Read results using System 2</h2>
   <ul>
-    <li>Run it again</li>
-    <li>Cost beside score</li>
-    <li>Evals expire too</li>
+    <li class="fragment">Run it again</li>
+    <li class="fragment">Cost beside score</li>
+    <li class="fragment">Evals expire too</li>
   </ul>
   <aside class="notes">
     <p>Read results with slow, effortful System 2 thinking, not a glance at the top score.</p>
@@ -416,10 +419,10 @@
 <section>
   <h2>Should STE stay?</h2>
   <ul>
-    <li>Dataset: 3 docs tasks</li>
-    <li>Experiment A: Opus 5 + STE</li>
-    <li>Experiment B: Opus 5.5 + STE</li>
-    <li>Experiment C: Opus 5.5, no STE</li>
+    <li class="fragment">Dataset: 3 docs tasks</li>
+    <li class="fragment">Experiment A: Opus 5 + STE</li>
+    <li class="fragment">Experiment B: Opus 5.5 + STE</li>
+    <li class="fragment">Experiment C: Opus 5.5, no STE</li>
   </ul>
   <aside class="notes">
     <p>The three docs tasks are a procedure, a concept page and a troubleshooting entry for a fictional platform, scored by three judges and a pinned STE style judge over three repetitions.</p>
@@ -540,9 +543,9 @@
 <section>
   <h2>Start with a linter</h2>
   <ul>
-    <li><code>/doctor prompt-audit</code></li>
-    <li>Shows what looks stale</li>
-    <li>Run your evals</li>
+    <li class="fragment"><code>/doctor prompt-audit</code></li>
+    <li class="fragment">Shows what looks stale</li>
+    <li class="fragment">Run your evals</li>
   </ul>
   <aside class="notes">
     <p>The <code>/doctor prompt-audit</code> command checks your instruction files for lines written for older models.</p>
@@ -558,10 +561,10 @@
 <section>
   <h2>Next steps</h2>
   <ul>
-    <li>One line</li>
-    <li>3 cases: input + ground truth</li>
-    <li>Config: model, effort, system prompt</li>
-    <li>Experiment with vs without</li>
+    <li class="fragment">One line</li>
+    <li class="fragment">3 cases: input + ground truth</li>
+    <li class="fragment">Config: model, effort, system prompt</li>
+    <li class="fragment">Experiment with vs without</li>
   </ul>
   <aside class="notes">
     <p>Pick the one line in your prompt you can't justify.</p>
