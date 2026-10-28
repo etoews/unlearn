@@ -91,7 +91,7 @@
     <p>First we look at what unlearning means when models change every few months.</p>
     <p>Then we cover just enough about evals to run one.</p>
     <p>Then we walk through a real eval that tests whether my STE rule should stay.</p>
-    <p>Finally we leave with a first step you can take on Monday.</p>
+    <p>Finally we leave with next steps you can take straight away.</p>
     <p>Citations: none.</p>
   </aside>
 </section>
@@ -511,27 +511,8 @@
 <section class="separator">
   <h2>Start unlearning</h2>
   <aside class="notes">
-    <p>This section turns the method into a first step you can take on Monday.</p>
+    <p>This section turns the method into next steps you can take straight away.</p>
     <p>Citations: none.</p>
-  </aside>
-</section>
-
-<section>
-  <h2>New model, new workarounds</h2>
-  <ul>
-    <li>"thoughts? = discuss"</li>
-    <li>Written for Opus 5</li>
-    <li>Give it an expiry</li>
-  </ul>
-  <aside class="notes">
-    <p>I'm still writing workarounds, like a rule that "thoughts?" means discuss rather than start work.</p>
-    <p>I wrote it for Opus 5, so it needs the same test when the next model ships.</p>
-    <p>Give every rule an expiry condition and record the incident it exists for.</p>
-    <p>Citations:</p>
-    <ul>
-      <li>"thoughts? = discuss", "Written for Opus 5": my own CLAUDE.md commit, 19 Sep 2026 ("because the default reading is to start work").</li>
-      <li>"Give it an expiry": Zaninotto, F., "The State Of AI Harness Engineering 2026", Marmelab, 24 Sep 2026 ("give every control an expiry condition, and write down the incident it exists for"). <a href="https://marmelab.com/blog/2026/09/24/the-state-of-ai-harness-engineering-2026.html">marmelab.com</a></li>
-    </ul>
   </aside>
 </section>
 
@@ -540,36 +521,36 @@
   <ul>
     <li><code>/doctor prompt-audit</code></li>
     <li>Shows what looks stale</li>
-    <li>Mine: "nothing stale"</li>
-    <li>Then: test it</li>
+    <li>Run your evals</li>
   </ul>
   <aside class="notes">
     <p>The <code>/doctor prompt-audit</code> command checks your instruction files for lines written for older models.</p>
     <p>It only shows what looks stale, so it's a linter, not a measurement.</p>
-    <p>It found nothing stale in my CLAUDE.md three weeks after I added an Opus 5 rule.</p>
-    <p>After the linter, test the remaining lines with an eval.</p>
+    <p>After the linter, run your evals to test the lines it didn't flag.</p>
     <p>Citations:</p>
     <ul>
       <li>"/doctor prompt-audit", "Shows what looks stale": "Memory", Claude Code Docs, section "Audit your instruction files" ("run /doctor prompt-audit in a session" and "instructions written for older models"). <a href="https://code.claude.com/docs/en/memory">code.claude.com</a></li>
-      <li>"Mine: nothing stale": my own <code>/doctor prompt-audit</code> run, 11 Oct 2026 ("no workarounds for older models").</li>
     </ul>
   </aside>
 </section>
 
 <section>
-  <h2>Monday</h2>
+  <h2>Next steps</h2>
   <ul>
     <li>One line</li>
-    <li>20 real cases</li>
-    <li>With vs without</li>
+    <li>3 cases: input + ground truth</li>
+    <li>Config: model, effort, system prompt</li>
+    <li>Experiment with vs without</li>
   </ul>
   <aside class="notes">
     <p>Pick the one line in your prompt you can't justify.</p>
-    <p>Build 20 cases from real failures.</p>
-    <p>Run an eval with the line and without it, and let the results decide.</p>
+    <p>Set up three cases, each pairing an input with a ground truth answer.</p>
+    <p>Set up the config as the model, effort and system prompt you use today.</p>
+    <p>Run one experiment with the line and one without it, and let the results decide.</p>
     <p>Citations:</p>
     <ul>
-      <li>"20 real cases": Anthropic, "Demystifying evals for AI agents" ("20-50 simple tasks drawn from real failures is a great start"). <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">anthropic.com</a></li>
+      <li>"3 cases", "input + ground truth": Husain, H. &amp; Shankar, S., "AI Evals: Everything You Need to Know", 18 Sep 2026. <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a> · Three cases, as in my own dataset in evals/ste. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      <li>"Config: model, effort, system prompt", "Experiment": the ai-evals skill. <a href="https://github.com/etoews/skills/tree/main/skills/ai-evals">github.com</a></li>
     </ul>
   </aside>
 </section>
