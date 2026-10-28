@@ -19,7 +19,7 @@ The slides are a [reveal.js](https://revealjs.com/) deck in [presentation/](pres
 - **Present locally, offline:** open `presentation/index.html` in a browser. reveal.js 6.0.2 is vendored in `presentation/vendor/reveal.js/`, so the deck needs no network connection.
 - **Online:** GitHub Pages publishes the `main` branch at <https://etoews.github.io/unlearn/presentation/>.
 
-The deck uses reveal.js's black theme over a background image, `presentation/backgrounds/eng-background-3.jpg`. The image carries a logo top left and "Engineering" bottom right. Each slide sits in a dark panel between them, styled in `index.html`, so text stays readable over the image.
+The deck uses reveal.js's black theme over a background built from three layers in `presentation/backgrounds/`: the fibre image `fibres.jpg`, which stretches to fill the screen, and the logo `deloitte.svg` top left and `engineering.svg` bottom right, which keep their proportions on any screen shape. Each slide sits in a dark panel between the two words, styled in `index.html`, so text stays readable over the image.
 
 A git graph across the bottom replaces reveal.js's progress bar. Each slide, vertical slides included, is a commit, and a commit appears when its slide does. Each section separator (`<section class="separator">`) is a commit on main that merges the previous section, and the section's slides branch off it. The last slide is the final merge into main. The graph is built from the slides when the deck loads, so adding a slide or section updates it. Click a commit to go to its slide.
 

@@ -10,8 +10,14 @@
 <link rel="stylesheet" href="vendor/reveal.js/theme/black.css">
 <link rel="stylesheet" href="vendor/reveal.js/plugin/highlight/monokai.css">
 <style>
-  /* Stretched to fill, not cover: the logo and "Engineering" sit near the image edges and cover would clip them. */
-  .reveal-viewport { background: #000 url("backgrounds/eng-background-3.jpg") center / 100% 100% no-repeat; }
+  /* The fibres stretch to fill, because cover would clip the words near the edges. The words are separate layers sized by
+     width, so they keep their proportions, and each stays centred where it sat in the stretched image. */
+  .reveal-viewport {
+    background:
+      url("backgrounds/deloitte.svg") left 3.65vw top calc(8.59vh - 1.56vw) / 16.66vw auto no-repeat,
+      url("backgrounds/engineering.svg") right 3.69vw top calc(90.31vh - 1.98vw) / 23.01vw auto no-repeat,
+      #000 url("backgrounds/fibres.jpg") center / 100% 100% no-repeat;
+  }
   /* Every slide is the same dark panel, sized to sit between the logo (top) and "Engineering" (bottom) so text stays readable over the streaks. reveal.js centres it vertically. */
   .reveal .slides section:not(.stack) {
     box-sizing: border-box; width: 1160px; height: 500px; left: 60px; padding: 20px 50px;
