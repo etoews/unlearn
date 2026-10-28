@@ -626,28 +626,28 @@
     plugins: [RevealNotes, RevealHighlight, RevealZoom, RevealSearch]
   });
 
-  // Progress as a git graph: every slide is a commit, and each section is a branch off main that merges back
-  // when the next section starts. The last slide is the final merge. A commit appears when its slide does.
+  // Progress as a git graph: every slide is a commit. Each section separator is a commit on main, which merges the
+  // previous section, and the section's slides branch off it. The last slide is the final merge. A commit appears when its slide does.
   (function () {
     const LANE_COLOURS = ['#26890d', '#86bc25'];
     const commits = [];
-    const add = (commit) => { commit.col = commits.length; commits.push(commit); return commit; };
     const title = (section) => section.querySelector('h1, h2, h3')?.textContent || section.querySelector('img')?.alt || '';
     const sections = document.querySelectorAll('.reveal .slides > section');
     let lane = 0, branchPoint = null, last = null;
 
     sections.forEach((section, h) => {
       const separator = section.classList.contains('separator');
-      if (separator) {
-        if (lane) last = add({ lane: 0, parents: [branchPoint, last] });
-        branchPoint = last;
-        lane = 1;
-      }
       const slides = section.querySelectorAll(':scope > section');
       (slides.length ? [...slides] : [section]).forEach((slide, v) => {
-        const finalMerge = lane && !separator && h === sections.length - 1 && v === Math.max(slides.length, 1) - 1;
-        last = add(finalMerge ? { lane: 0, parents: [branchPoint, last], h, v, title: title(slide) }
-          : { lane, parents: last ? [last] : [], h, v, title: title(slide) });
+        const finalSlide = h === sections.length - 1 && v === Math.max(slides.length, 1) - 1;
+        const merge = lane && (separator || finalSlide);
+        last = { col: commits.length, lane: separator || merge ? 0 : lane, h, v, title: title(slide),
+          parents: merge ? [branchPoint, last] : last ? [last] : [] };
+        commits.push(last);
+        if (separator) {
+          branchPoint = last;
+          lane = 1;
+        }
       });
     });
 
@@ -662,9 +662,7 @@
     const edges = [];
     commits.forEach((c) => c.parents.forEach((p) => edges.push({ p, c, node: el('path', { class: 'todo', stroke: LANE_COLOURS[Math.max(p.lane, c.lane)] }, svg) })));
     commits.forEach((c) => {
-      c.node = el('circle', { class: 'todo', fill: LANE_COLOURS[c.lane] }, svg);
-      if (c.h === undefined) return;
-      c.node.classList.add('commit');
+      c.node = el('circle', { class: 'commit todo', fill: LANE_COLOURS[c.lane] }, svg);
       el('title', {}, c.node).textContent = c.title;
       c.node.addEventListener('click', () => Reveal.slide(c.h, c.v));
     });
@@ -687,7 +685,7 @@
       commits.forEach((c) => {
         c.node.setAttribute('cx', x(c));
         c.node.setAttribute('cy', y(c));
-        c.node.setAttribute('r', c.h === undefined ? r * 0.75 : r);
+        c.node.setAttribute('r', r);
       });
       head.setAttribute('cx', x(current));
       head.setAttribute('cy', y(current));

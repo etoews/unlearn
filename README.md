@@ -21,7 +21,7 @@ The slides are a [reveal.js](https://revealjs.com/) deck in [presentation/](pres
 
 The deck uses reveal.js's black theme over a background image, `presentation/backgrounds/eng-background-3.jpg`. The image carries a logo top left and "Engineering" bottom right. Each slide sits in a dark panel between them, styled in `index.html`, so text stays readable over the image.
 
-A git graph across the bottom replaces reveal.js's progress bar. Each slide, vertical slides included, is a commit, and a commit appears when its slide does. Each section separator (`<section class="separator">`) starts a branch off main, and the branch merges back when the next section starts. The last slide is the final merge into main. The graph is built from the slides when the deck loads, so adding a slide or section updates it. Click a commit to go to its slide.
+A git graph across the bottom replaces reveal.js's progress bar. Each slide, vertical slides included, is a commit, and a commit appears when its slide does. Each section separator (`<section class="separator">`) is a commit on main that merges the previous section, and the section's slides branch off it. The last slide is the final merge into main. The graph is built from the slides when the deck loads, so adding a slide or section updates it. Click a commit to go to its slide.
 
 Diagrams are standalone SVG files in `presentation/diagrams/`, referenced from the slides with `<img>`. Each file carries its own styles, because page CSS doesn't reach into an SVG loaded as an image. They use light text and Deloitte green on dark fills to suit the background. Phoenix screenshots for the backup slides are in `presentation/screenshots/`, and the speaker photo is in `presentation/images/`.
 
