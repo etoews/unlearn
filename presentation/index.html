@@ -308,17 +308,18 @@
   <ul>
     <li class="fragment">Give it the answer</li>
     <li class="fragment">Long ≠ good</li>
-    <li class="fragment">Pin it. Binary. Read why.</li>
+    <li class="fragment">Pin it</li>
+    <li class="fragment">Read explanations</li>
   </ul>
   <aside class="notes">
     <p>Giving the judge a reference answer cut false passes on wrong maths answers from 14 in 20 to 3 in 20.</p>
     <p>Judges favour longer answers, which matters with a model as verbose as Opus 5.</p>
-    <p>Pin the judge model, use pass/fail labels and read the judge's explanations.</p>
+    <p>Pin the judge model, so a score change comes from the candidate and not the judge.</p>
+    <p>Read the judge's explanations, not just its scores.</p>
     <p>Citations:</p>
     <ul>
       <li>"Give it the answer": Zheng, L. et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", 2023, Table 4 ("Judge failure rate on 10 math questions with different prompts." and "A failure means when GPT-4 says an incorrect answer is correct."; the Default, CoT and Reference columns read 14/20, 6/20 and 3/20). <a href="https://arxiv.org/html/2306.05685">arXiv HTML</a> · <a href="https://arxiv.org/abs/2306.05685">arXiv</a></li>
       <li>"Long ≠ good": Zheng et al. 2023 ("Verbosity bias is when an LLM judge favors longer, verbose responses, even if they are not as clear, high-quality, or accurate as shorter alternatives."). <a href="https://arxiv.org/html/2306.05685">arXiv HTML</a> · paddo.dev, "A Dial Worth Turning" ("510 words per response for Opus 5, against 158 for Opus 4.5"). <a href="https://paddo.dev/blog/a-dial-worth-turning/">paddo.dev</a></li>
-      <li>"Binary": Husain &amp; Shankar ("Binary evaluations force clearer thinking and more consistent labeling"). <a href="https://hamel.dev/blog/posts/evals-faq/">hamel.dev</a></li>
     </ul>
   </aside>
 </section>
