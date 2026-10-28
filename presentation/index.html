@@ -52,15 +52,13 @@
   .reveal .qr-codes figure { margin: 0; }
   .reveal .slides section .qr-codes img { width: 240px; height: 240px; margin: 0; }
   .reveal .qr-codes figcaption { font-size: 0.6em; margin-top: 10px; }
-  /* Git graph progress, in the strip below the panel and clear of "Engineering" bottom right. It scales with the viewport, like the background. */
-  .reveal .git-graph { position: absolute; left: 4.5%; bottom: 2%; width: 66%; height: 10%; z-index: 10; overflow: visible; }
-  .reveal .git-graph path { fill: none; stroke-width: 2; }
-  .reveal .git-graph circle { stroke-width: 2; fill: #000; }
+  /* Git graph progress, across the bottom of the viewport below "Engineering". It scales with the viewport, like the background. */
+  .reveal .git-graph { position: absolute; left: 3.5%; bottom: 1%; width: 93%; height: 4.5%; z-index: 10; overflow: visible; }
+  .reveal .git-graph path { fill: none; }
+  .reveal .git-graph path, .reveal .git-graph circle { transition: opacity 0.3s; }
   .reveal .git-graph .commit { cursor: pointer; }
-  .reveal .git-graph .done { fill: currentColor; }
-  .reveal .git-graph .todo { opacity: 0.35; }
-  .reveal .git-graph .head { fill: none; stroke: #fff; stroke-width: 1.5; }
-  .reveal .git-graph text { font: 600 9px var(--r-main-font); fill: #c8c8c8; }
+  .reveal .git-graph .todo { opacity: 0; pointer-events: none; }
+  .reveal .git-graph .head { fill: none; stroke: #fff; }
 </style>
 </head>
 <body>
@@ -628,37 +626,31 @@
     plugins: [RevealNotes, RevealHighlight, RevealZoom, RevealSearch]
   });
 
-  // Progress as a git graph: every slide is a commit, each section is a branch off main that merges back
-  // when the section ends, and a vertical stack is a branch off its top slide.
+  // Progress as a git graph: every slide is a commit, and each section is a branch off main that merges back
+  // when the next section starts. The last slide is the final merge. A commit appears when its slide does.
   (function () {
-    const DX = 20, DY = 14, R = 4, LABEL = 14, LANE_COLOURS = ['#ffffff', '#86bc25', '#a6d84a'];
+    const LANE_COLOURS = ['#26890d', '#86bc25'];
     const commits = [];
     const add = (commit) => { commit.col = commits.length; commits.push(commit); return commit; };
     const title = (section) => section.querySelector('h1, h2, h3')?.textContent || section.querySelector('img')?.alt || '';
+    const sections = document.querySelectorAll('.reveal .slides > section');
     let lane = 0, branchPoint = null, last = null;
-    const merge = () => { last = add({ lane: 0, parents: [branchPoint, last] }); lane = 0; };
 
-    document.querySelectorAll('.reveal .slides > section').forEach((section, h) => {
+    sections.forEach((section, h) => {
       const separator = section.classList.contains('separator');
       if (separator) {
-        if (lane) merge();
+        if (lane) last = add({ lane: 0, parents: [branchPoint, last] });
         branchPoint = last;
         lane = 1;
       }
-      const stack = section.querySelectorAll(':scope > section');
-      const top = stack[0] || section;
-      last = add({ lane, parents: last ? [last] : [], h, v: 0, title: title(top), label: separator ? title(section) : null });
-      if (stack.length > 1) {
-        const stackTop = last;
-        for (let v = 1; v < stack.length; v++) last = add({ lane: lane + 1, parents: [last], h, v, title: title(stack[v]) });
-        last = add({ lane, parents: [stackTop, last] });
-      }
+      const slides = section.querySelectorAll(':scope > section');
+      (slides.length ? [...slides] : [section]).forEach((slide, v) => {
+        const finalMerge = lane && !separator && h === sections.length - 1 && v === Math.max(slides.length, 1) - 1;
+        last = add(finalMerge ? { lane: 0, parents: [branchPoint, last], h, v, title: title(slide) }
+          : { lane, parents: last ? [last] : [], h, v, title: title(slide) });
+      });
     });
-    if (lane) merge();
 
-    const lanes = Math.max(...commits.map((c) => c.lane)) + 1;
-    const x = (c) => R + 2 + c.col * DX;
-    const y = (c) => LABEL + R + 2 + (lanes - 1 - c.lane) * DY;
     const ns = 'http://www.w3.org/2000/svg';
     const el = (name, attrs, parent) => {
       const node = document.createElementNS(ns, name);
@@ -666,36 +658,51 @@
       parent.appendChild(node);
       return node;
     };
-
-    const svg = el('svg', { class: 'git-graph', 'aria-hidden': 'true', preserveAspectRatio: 'xMinYMax meet',
-      viewBox: `0 0 ${x(commits[commits.length - 1]) + R + 2} ${y({ lane: 0 }) + R + 2}` }, document.querySelector('.reveal'));
+    const svg = el('svg', { class: 'git-graph', 'aria-hidden': 'true' }, document.querySelector('.reveal'));
     const edges = [];
-    commits.forEach((c) => c.parents.forEach((p) => {
-      const mid = (x(p) + x(c)) / 2;
-      const d = p.lane === c.lane ? `M${x(p)} ${y(p)} H${x(c)}` : `M${x(p)} ${y(p)} C${mid} ${y(p)} ${mid} ${y(c)} ${x(c)} ${y(c)}`;
-      edges.push({ child: c, node: el('path', { d, stroke: LANE_COLOURS[Math.max(p.lane, c.lane)] }, svg) });
-    }));
+    commits.forEach((c) => c.parents.forEach((p) => edges.push({ p, c, node: el('path', { class: 'todo', stroke: LANE_COLOURS[Math.max(p.lane, c.lane)] }, svg) })));
     commits.forEach((c) => {
-      if (c.label) el('text', { x: x(c) - R, y: LABEL - 4 }, svg).textContent = c.label;
-      c.node = el('circle', { cx: x(c), cy: y(c), r: c.h === undefined ? R - 1 : R, stroke: 'currentColor', color: LANE_COLOURS[c.lane] }, svg);
+      c.node = el('circle', { class: 'todo', fill: LANE_COLOURS[c.lane] }, svg);
       if (c.h === undefined) return;
       c.node.classList.add('commit');
       el('title', {}, c.node).textContent = c.title;
       c.node.addEventListener('click', () => Reveal.slide(c.h, c.v));
     });
-    const head = el('circle', { class: 'head', r: R + 3 }, svg);
+    const head = el('circle', { class: 'head' }, svg);
+    let current = commits[0];
+
+    // Lays the commits out in pixels across the full width, so circles stay round at any aspect ratio.
+    function layout() {
+      const { width, height } = svg.getBoundingClientRect();
+      const r = height * 0.13;
+      const x = (c) => r * 2 + c.col * (width - r * 4) / (commits.length - 1);
+      const y = (c) => c.lane ? height * 0.25 : height * 0.75;
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      edges.forEach(({ p, c, node }) => {
+        const mid = (x(p) + x(c)) / 2;
+        node.setAttribute('stroke-width', r * 0.5);
+        node.setAttribute('d', p.lane === c.lane ? `M${x(p)} ${y(p)} H${x(c)}`
+          : `M${x(p)} ${y(p)} C${mid} ${y(p)} ${mid} ${y(c)} ${x(c)} ${y(c)}`);
+      });
+      commits.forEach((c) => {
+        c.node.setAttribute('cx', x(c));
+        c.node.setAttribute('cy', y(c));
+        c.node.setAttribute('r', c.h === undefined ? r * 0.75 : r);
+      });
+      head.setAttribute('cx', x(current));
+      head.setAttribute('cy', y(current));
+      head.setAttribute('r', r * 1.7);
+      head.setAttribute('stroke-width', r * 0.35);
+    }
 
     function update() {
       const { h, v } = Reveal.getIndices();
-      const current = commits.find((c) => c.h === h && c.v === (v || 0));
-      commits.forEach((c) => {
-        c.node.classList.toggle('done', c.col <= current.col);
-        c.node.classList.toggle('todo', c.col > current.col);
-      });
-      edges.forEach((e) => e.node.classList.toggle('todo', e.child.col > current.col));
-      head.setAttribute('cx', x(current));
-      head.setAttribute('cy', y(current));
+      current = commits.find((c) => c.h === h && c.v === (v || 0));
+      commits.forEach((c) => c.node.classList.toggle('todo', c.col > current.col));
+      edges.forEach((e) => e.node.classList.toggle('todo', e.c.col > current.col));
+      layout();
     }
+    new ResizeObserver(layout).observe(svg);
     Reveal.on('ready', update);
     Reveal.on('slidechanged', update);
     if (Reveal.isReady()) update();
