@@ -28,7 +28,11 @@
   .reveal p.quote cite { font-size: 0.8em; font-style: normal; color: #86bc25; }
   .reveal p.subtitle { font-size: 0.7em; color: #c8c8c8; margin: -1em 0 10px; }
   .reveal .intro { display: flex; align-items: center; gap: 60px; text-align: left; }
-  .reveal .slides section .intro img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #86bc25; }
+  .reveal .slides section .intro img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 4px solid #86bc25; }
+  /* The portrait swap: the fragment photo fades in exactly over the first. */
+  .reveal .intro .portrait { position: relative; }
+  .reveal .slides section .intro .portrait img { display: block; margin: 0; }
+  .reveal .slides section .intro .portrait img.fragment { position: absolute; top: 0; left: 0; }
   .reveal .intro h2 { margin-bottom: 0.4em; }
   .reveal .intro p { margin: 0.3em 0; }
   /* Tables with many columns: smaller text, one line per cell. */
@@ -49,11 +53,17 @@
   /* Verdict evidence: the numbers appear together, then each description in turn. */
   .reveal .evidence { display: grid; grid-template-columns: auto auto; justify-content: center; gap: 0 30px; font-size: 0.85em; text-align: left; }
   .reveal .evidence .num { text-align: right; font-weight: 700; color: #86bc25; }
-  /* Section separators: a larger heading on its own. */
-  .reveal .separator h2 { font-size: 2em; }
-  .reveal .qr-codes { display: flex; justify-content: center; gap: 60px; }
+  /* Section separators: a larger heading on the left, a photo on the right inset 20px from the panel's top, bottom and right edges. */
+  .reveal .slides section.separator { flex-direction: row; padding: 20px 20px 20px 50px; gap: 30px; }
+  /* 1.7em keeps the longest word, "UNLEARNING", inside the space beside the photo; min-width 0 stops any longer one pushing the photo off its inset. */
+  .reveal .separator h2 { flex: 1; min-width: 0; font-size: 1.7em; margin: 0; }
+  /* Every photo is cropped to the same 4:3 box, so the heading gets the same room on each divider. */
+  .reveal .slides section.separator img { flex: 0 0 auto; height: 100%; aspect-ratio: 4 / 3; margin: 0; object-fit: cover; border-radius: 12px; }
+  .reveal .slides section.separator img.crop-left { object-position: left; }
+  .reveal .qr-codes { display: flex; justify-content: center; gap: 30px; }
   .reveal .qr-codes figure { margin: 0; }
-  .reveal .slides section .qr-codes img { width: 240px; height: 240px; margin: 0; }
+  .reveal .slides section .qr-codes img { width: 240px; height: 240px; max-width: none; margin: 0; }
+  .reveal .slides section .qr-codes img.photo { object-fit: cover; }
   .reveal .qr-codes figcaption { font-size: 0.6em; margin-top: 10px; }
   /* Git graph progress, across the bottom of the viewport below "Engineering". It scales with the viewport, like the background. */
   .reveal .git-graph { position: absolute; left: 3.5%; bottom: 1%; width: 93%; height: 4.5%; z-index: 10; overflow: visible; }
@@ -81,7 +91,10 @@
 
 <section>
   <div class="intro">
-    <img src="images/everett.jpg" alt="Everett Toews, smiling, in a yellow T-shirt.">
+    <div class="portrait">
+      <img src="images/everett.jpg" alt="Everett Toews, smiling, in a yellow T-shirt.">
+      <img class="fragment" src="images/scuba-blue-cod.jpg" alt="A blue cod staring straight into the camera over a sandy seabed.">
+    </div>
     <div>
       <h2>Everett Toews</h2>
       <p>Specialist Director</p>
@@ -90,6 +103,7 @@
   </div>
   <aside class="notes">
     <p>I'm Everett Toews, a Specialist Director at Deloitte New Zealand.</p>
+    <p>And this is me underwater, face to face with a blue cod.</p>
     <p>Citations: none.</p>
   </aside>
 </section>
@@ -115,8 +129,10 @@
 
 <section class="separator">
   <h2>Unlearn</h2>
+  <img src="images/scuba-bull-shark.jpg" alt="A bull shark cruising over a rocky reef among small fish.">
   <aside class="notes">
     <p>This section shows why the workarounds we wrote for older models are so hard to let go.</p>
+    <p>The photo is a bull shark, a breather before the section starts.</p>
     <p>Citations: none.</p>
   </aside>
 </section>
@@ -238,8 +254,10 @@
 
 <section class="separator">
   <h2>Evals</h2>
+  <img src="images/scuba-wrasse.jpg" alt="A banded wrasse swimming past a reef covered in pink and yellow growth.">
   <aside class="notes">
     <p>This section covers just enough about evals to test a single line of your prompt.</p>
+    <p>The photo is a banded wrasse, a breather before the section starts.</p>
     <p>Citations: none.</p>
   </aside>
 </section>
@@ -371,8 +389,10 @@
 
 <section class="separator">
   <h2>Walk-through</h2>
+  <img src="images/scuba-squid.jpg" alt="A squid caught in a diver's torch beams on a night dive.">
   <aside class="notes">
     <p>This section runs a real eval on my STE rule to decide whether it should stay.</p>
+    <p>The photo is a squid on a night dive, a breather before the section starts.</p>
     <p>Citations: none.</p>
   </aside>
 </section>
@@ -534,8 +554,10 @@
 
 <section class="separator">
   <h2>Start unlearning</h2>
+  <img class="crop-left" src="images/scuba-humpback.jpg" alt="A humpback whale swimming just below the surface.">
   <aside class="notes">
     <p>This section turns the method into next steps you can take straight away.</p>
+    <p>The photo is a humpback whale, a breather before the section starts.</p>
     <p>Citations: none.</p>
   </aside>
 </section>
@@ -596,11 +618,13 @@
     <figure><img src="images/qr-unlearn.svg" alt="QR code for github.com/etoews/unlearn"><figcaption>This talk</figcaption></figure>
     <figure><img src="images/qr-ai-evals.svg" alt="QR code for the ai-evals skill on GitHub"><figcaption>ai-evals skill</figcaption></figure>
     <figure><img src="images/qr-linkedin.svg" alt="QR code for linkedin.com/in/etoews"><figcaption>LinkedIn</figcaption></figure>
+    <figure><img class="photo" src="images/scuba-turtle.jpg" alt="A green sea turtle swimming in open blue water."><figcaption>Turtle</figcaption></figure>
   </div>
   <aside class="notes">
     <p>The first QR code is this talk's repo, with the slides and the STE eval.</p>
     <p>The second is the ai-evals skill, which has everything you need to run this yourself.</p>
     <p>The third is my LinkedIn, if you want to keep talking.</p>
+    <p>The turtle is there to wave goodbye.</p>
     <p>Citations:</p>
     <ul>
       <li>"This talk": <a href="https://github.com/etoews/unlearn">github.com/etoews/unlearn</a></li>
