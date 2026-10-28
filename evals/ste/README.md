@@ -11,7 +11,7 @@ I added the line because Opus 5 wrote long, elliptical docs. Opus 5.5 claims bet
 - `cases/`: three docs tasks for Tui, a fictional internal Kubernetes platform. Each task gives messy source notes and asks for a page: a procedure, a concept page and a troubleshooting entry. The ground truth is the page I want.
 - `prompts/base.md`: the system prompt for every experiment.
 - `prompts/ste.md`: the same prompt plus the STE line.
-- `judges/writing-style.yaml`: the `writing_style` metric, a binary judge for a subset of the STE writing rules. It runs beside the three built-in metrics (correctness, relevance and faithfulness).
+- `judges/writing-ste.yaml`: the `writing_ste` metric, a binary judge for a subset of the STE writing rules. It runs beside the three built-in metrics (correctness, relevance and faithfulness).
 
 ## Experiments
 
@@ -31,7 +31,7 @@ You need the [ai-evals skill](https://github.com/etoews/skills/tree/main/skills/
 run() {
   uv run python scripts/run_eval.py --dataset "$EVAL/cases" --dataset-name unlearn-ste \
     --effort xhigh --judge-model anthropic/claude-fable-5-1 \
-    --judge-file "$EVAL/judges/writing-style.yaml" --repetitions 3 "$@"
+    --judge-file "$EVAL/judges/writing-ste.yaml" --repetitions 3 "$@"
 }
 run --model anthropic/claude-opus-5   --system-prompt-file "$EVAL/prompts/ste.md"  --experiment-name "A: opus-5 + STE"
 run --model anthropic/claude-opus-5-5 --system-prompt-file "$EVAL/prompts/ste.md"  --experiment-name "B: opus-5.5 + STE"

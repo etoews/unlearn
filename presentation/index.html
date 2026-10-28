@@ -40,6 +40,7 @@
   .reveal .logo-title h2 { font-size: 2em; margin: 0; }
   /* The verdict's decisions sit tight under the heading, apart from the evidence below. */
   .reveal p.decisions { margin: -0.4em 0 1em; }
+  .reveal p.decisions strong { color: #86bc25; }
   /* Verdict evidence: the numbers appear together, then each description in turn. */
   .reveal .evidence { display: grid; grid-template-columns: auto auto; justify-content: center; gap: 0 30px; font-size: 0.85em; text-align: left; }
   .reveal .evidence .num { text-align: right; font-weight: 700; color: #86bc25; }
@@ -335,7 +336,7 @@
       <li>"Faithfulness", "Invents nothing beyond the ground truth": same file ("Does the answer avoid contradicting or fabricating beyond the ground truth?").</li>
       <li>"Relevance", "Addresses the question": same file ("Does the answer actually address the question?").</li>
       <li>"Custom metric": the ai-evals skill, references/metrics.md ("For a judge specific to one dataset, such as a style rubric, write a YAML file"). <a href="https://github.com/etoews/skills/blob/main/skills/ai-evals/references/metrics.md">github.com</a></li>
-      <li>"Writing style", "e.g. STE": my own judge, evals/ste/judges/writing-style.yaml ("writing rules of ASD-STE100 Simplified Technical English (STE)"). <a href="https://github.com/etoews/unlearn/blob/main/evals/ste/judges/writing-style.yaml">github.com/etoews/unlearn</a></li>
+      <li>"Writing style", "e.g. STE": my own judge, evals/ste/judges/writing-ste.yaml ("writing rules of ASD-STE100 Simplified Technical English (STE)"). <a href="https://github.com/etoews/unlearn/blob/main/evals/ste/judges/writing-ste.yaml">github.com/etoews/unlearn</a></li>
       <li>"There are many more": Arize Phoenix, "Pre-built Metrics" ("Phoenix provides pre-built evaluation metrics that can be used out of the box to assess LLM application quality."). <a href="https://arize.com/docs/phoenix/evaluation/pre-built-metrics">arize.com</a></li>
     </ul>
   </aside>
@@ -459,13 +460,13 @@
   </section>
   <section>
     <h3>One judge explanation</h3>
-    <p>C, password rotation, writing_style: fail</p>
+    <p>C, password rotation, writing_ste: fail</p>
     <blockquote>"Then restart the deployment again (step 4) and recheck (step 5)." It starts with an adverb and gives two actions in one instruction.</blockquote>
     <aside class="notes">
       <p>The STE style judge failed C's password rotation output because one step starts with an adverb and packs in two actions.</p>
       <p>Citations:</p>
       <ul>
-        <li>"writing_style: fail": the judge's explanation from my own runs of evals/ste, 26 Oct 2026. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+        <li>"writing_ste: fail": the judge's explanation from my own runs of evals/ste, 26 Oct 2026. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
       </ul>
     </aside>
   </section>
@@ -486,23 +487,21 @@
   <h2>Verdict</h2>
   <p class="decisions">Keep · Upsert · <strong>Unlearn</strong></p>
   <div class="evidence">
-    <span class="num fragment" data-fragment-index="0">6/9</span><span class="fragment" data-fragment-index="1">STE style passes with the rule</span>
-    <span class="num fragment" data-fragment-index="0">2/9</span><span class="fragment" data-fragment-index="2">STE style passes without it</span>
-    <span class="num fragment" data-fragment-index="0">0</span><span class="fragment" data-fragment-index="3">change in facts</span>
-    <span class="num fragment" data-fragment-index="0">2.4×</span><span class="fragment" data-fragment-index="4">the cost with STE</span>
-    <span class="num fragment" data-fragment-index="0">~480</span><span class="fragment" data-fragment-index="5">words, with or without STE</span>
+    <span class="num fragment" data-fragment-index="0">2/9</span><span class="fragment" data-fragment-index="1">writing_ste passes on Opus 5.5, no STE</span>
+    <span class="num fragment" data-fragment-index="0">0</span><span class="fragment" data-fragment-index="2">change in facts</span>
+    <span class="num fragment" data-fragment-index="0">2.4×</span><span class="fragment" data-fragment-index="3">the cost with STE</span>
+    <span class="num fragment" data-fragment-index="0">~480</span><span class="fragment" data-fragment-index="4">words, with or without STE</span>
   </div>
   <aside class="notes">
     <p>The verdict is unlearn, and I deleted the STE line: it still shifts the style, but adds no accuracy, costs 2.4 times as much and never fixed length.</p>
     <p>The numbers come first, then I explain each one in turn.</p>
-    <p>STE style passed 6 of 9 runs with the rule, so the line still changes Opus 5.5's style.</p>
-    <p>Without the rule, STE style passed only 2 of 9 runs.</p>
+    <p>On Opus 5.5 without the rule, writing_ste passed only 2 of 9 runs.</p>
     <p>Fact scores didn't change at all, so the rule adds nothing to accuracy.</p>
     <p>Runs with STE cost 2.4 times as much, because the rule doubles the thinking.</p>
     <p>Both experiments averaged about 480 words, 3.5 times the ground truth, so the rule never fixed length.</p>
     <p>Citations:</p>
     <ul>
-      <li>"6/9", "2/9", "0", "2.4×", "~480": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per experiment (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
+      <li>"2/9", "0", "2.4×", "~480": my own runs of evals/ste, 26 Oct 2026. Scores are passes out of 9 runs per experiment (3 cases × 3 repetitions), judged by Fable 5.1. Task cost $1.13 vs $0.47 in Phoenix. Ground truth averages 142 words. <a href="https://github.com/etoews/unlearn/tree/main/evals/ste">github.com/etoews/unlearn</a></li>
     </ul>
   </aside>
 </section>
