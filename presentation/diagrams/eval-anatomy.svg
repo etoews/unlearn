@@ -10,7 +10,6 @@
     .name { font-size: 24px; font-weight: 700; }
     .sub { font-size: 17px; fill: #c8c8c8; }
     .box { fill: #1c1c1c; stroke: #ddd; stroke-width: 2; }
-    .exp { fill: #1d2a0b; stroke: #86bc25; stroke-width: 3; }
     .flow { stroke: #ddd; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
     .bracket { stroke: #86bc25; stroke-width: 3; fill: none; }
     .label { font-size: 22px; font-weight: 700; fill: #86bc25; }
@@ -21,12 +20,12 @@
   <text class="sub" x="85" y="138">input +</text>
   <text class="sub" x="85" y="160">ground truth</text>
 
-  <rect class="exp" x="197" y="60" width="150" height="130" rx="8"/>
+  <rect class="box" x="197" y="60" width="150" height="130" rx="8"/>
   <text class="name" x="272" y="108">Config</text>
   <text class="sub" x="272" y="138">model · effort</text>
   <text class="sub" x="272" y="160">system prompt</text>
 
-  <rect class="exp" x="385" y="60" width="150" height="130" rx="8"/>
+  <rect class="box" x="385" y="60" width="150" height="130" rx="8"/>
   <text class="name" x="460" y="108">Outputs</text>
   <text class="sub" x="460" y="138">one per</text>
   <text class="sub" x="460" y="160">case</text>
